@@ -83,7 +83,7 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <th>Emission factor (kg CO2e/kg)</th>
                         </tr>
                         <tr>
-                            <td><input type='text' value={textv2} className='Input_fo2m' onChange={(e) => { setTextV2(e.target.value) }} /></td>
+                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
                             <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
                             <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
                         </tr>
