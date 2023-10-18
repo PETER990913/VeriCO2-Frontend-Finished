@@ -9,6 +9,14 @@ function WasteWaste({ onChange, dataset1 }) {
     const [v5, setV5] = useState(10);
     const [v6, setV6] = useState(5000);
     const [v7, setV7] = useState(0.5);
+    const [textv0, setTextV0] = useState('Plastic');
+    const [textv1, setTextV1] = useState('Landfill');
+    const [textv2, setTextV2] = useState('Plastic');
+    const [textv3, setTextV3] = useState('Incinerated with energy recovery');
+    const [textv4, setTextV4] = useState('Plastic');
+    const [textv5, setTextV5] = useState('Recycled');
+    const [textv6, setTextV6] = useState('Plastic');
+    const [textv7, setTextV7] = useState('Wastewater');
 
     useEffect(() => {
         if (dataset1.Incinerated_with_energy_recovery) {
@@ -39,27 +47,27 @@ function WasteWaste({ onChange, dataset1 }) {
                             <th>Waste type and waste treatment specific emission factor</th>
                         </tr>
                         <tr>
-                            <td>Plastic</td>
+                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
                             <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
-                            <td>Landfill</td>
+                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
                             <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Plastic</td>
+                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
                             <td><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
-                            <td> Incinerated with energy recovery </td>
+                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
                             <td><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Plastic</td>
+                            <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
                             <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
-                            <td> Recycled </td>
+                            <td><input type='text' value={textv5} className='Input_form' onChange={(e) => { setTextV5(e.target.value) }} /></td>
                             <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Plastic</td>
+                            <td><input type='text' value={textv6} className='Input_form' onChange={(e) => { setTextV6(e.target.value) }} /></td>
                             <td><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
-                            <td> Wastewater </td>
+                            <td><input type='text' value={textv7} className='Input_form' onChange={(e) => { setTextV7(e.target.value) }} /></td>
                             <td><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
                         </tr>
                     </tbody>

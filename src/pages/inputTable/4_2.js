@@ -12,6 +12,11 @@ function WasteAverage({ onChange, dataset1 }) {
     const [v8, setV8] = useState(10);
     const [v9, setV9] = useState(20);
     const [v10, setV10] = useState(30);
+    const [textv0, setTextV0] = useState('Landfill');
+    const [textv1, setTextV1] = useState('Incinerated with energy recovery');
+    const [textv2, setTextV2] = useState('Recycled');
+    const [textv3, setTextV3] = useState('Recycled');
+    const [textv4, setTextV4] = useState('Composted');
 
     useEffect(() => {
         if (dataset1.Composted_Average_emission_factor) {
@@ -42,27 +47,27 @@ function WasteAverage({ onChange, dataset1 }) {
                         </tr>
                         <tr>
                             <td rowSpan={5}><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
-                            <td>Landfill</td>
+                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
                             <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
                             <td><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td> Incinerated with energy recovery </td>
+                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
                             <td><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
                             <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td> Recycled </td>
+                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
                             <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
                             <td><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td> Recycled </td>
+                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
                             <td><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
                             <td><input type='text' value={v8} className='Input_form' onChange={(e) => { setV8(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td> Composted </td>
+                            <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
                             <td><input type='text' value={v9} className='Input_form' onChange={(e) => { setV9(e.target.value) }} /></td>
                             <td><input type='text' value={v10} className='Input_form' onChange={(e) => { setV10(e.target.value) }} /></td>
                         </tr>
