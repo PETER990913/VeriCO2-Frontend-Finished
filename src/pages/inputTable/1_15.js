@@ -67,7 +67,7 @@ function FuelTransmission({ onChange, dataset1 }) {
                 <table>
                     <tbody>
                         <tr>
-                            <th>Country</th>
+                            <th>Country name</th>
                             <th colSpan={2}>Electricity purchased (kWh) </th>
                             <th colSpan={2}>District heating purchased (kWh)</th>
                         </tr>
@@ -97,7 +97,7 @@ function FuelTransmission({ onChange, dataset1 }) {
                             <td colSpan={2}><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <th>Country</th>
+                            <th>Country name</th>
                             <th>Upstream emission factor of purchased electricity (kg CO2e/kWh)</th>
                             <th>Electricity/heat combustion emission factor (kg CO2e/kWh)</th>
                             <th>T&D loss rate (percent)</th>
