@@ -33,6 +33,16 @@ function FuelTransmission({ onChange, dataset1 }) {
     const [v29, setV29] = useState("N/A");
     const [v30, setV30] = useState(550000);
     const [v31, setV31] = useState("N/A");
+    const [textv0, setTextV0] = useState('Australia');
+    const [textv1, setTextV1] = useState('Canada');
+    const [textv2, setTextV2] = useState('India');
+    const [textv3, setTextV3] = useState('United States');
+    const [textv4, setTextV4] = useState('Turkey');
+    const [textv5, setTextV5] = useState('Australia');
+    const [textv6, setTextV6] = useState('Canada');
+    const [textv7, setTextV7] = useState('India');
+    const [textv8, setTextV8] = useState('United States');
+    const [textv9, setTextV9] = useState('Turkey');
 
     useEffect(() => {
         if (dataset1.Australia_Upstream_emission_factor) {
@@ -62,27 +72,27 @@ function FuelTransmission({ onChange, dataset1 }) {
                             <th colSpan={2}>District heating purchased (kWh)</th>
                         </tr>
                         <tr>
-                            <td>Australia</td>
+                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Canada</td>
+                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>India</td>
+                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>United States</td>
+                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v30} className='Input_form' onChange={(e) => { setV30(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v31} className='Input_form' onChange={(e) => { setV31(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Turkey</td>
+                            <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
                             <td colSpan={2}><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
                         </tr>
@@ -94,14 +104,14 @@ function FuelTransmission({ onChange, dataset1 }) {
                             <th>Upstream emission factor of purchased heating (kg CO2e/ kWh)</th>
                         </tr>
                         <tr>
-                            <td>Australia</td>
+                            <td><input type='text' value={textv5} className='Input_form' onChange={(e) => { setTextV5(e.target.value) }} /></td>
                             <td><input type='text' value={v8} className='Input_form' onChange={(e) => { setV8(e.target.value) }} /></td>
                             <td><input type='text' value={v9} className='Input_form' onChange={(e) => { setV9(e.target.value) }} /></td>
                             <td><input type='text' value={v10} className='Input_form' onChange={(e) => { setV10(e.target.value) }} /></td>
                             <td><input type='text' value={v11} className='Input_form' onChange={(e) => { setV11(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td rowSpan={2}>Canada</td>
+                            <td rowSpan={2}><input type='text' value={textv6} className='Input_form' onChange={(e) => { setTextV6(e.target.value) }} /></td>
                             <td rowSpan={2}><input type='text' value={v12} className='Input_form' onChange={(e) => { setV12(e.target.value) }} /></td>
                             <td><input type='text' value={v13} className='Input_form' onChange={(e) => { setV13(e.target.value) }} /></td>
                             <td><input type='text' value={v14} className='Input_form' onChange={(e) => { setV14(e.target.value) }} /></td>
@@ -112,21 +122,21 @@ function FuelTransmission({ onChange, dataset1 }) {
                             <td><input type='text' value={v17} className='Input_form' onChange={(e) => { setV17(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>India</td>
+                            <td><input type='text' value={textv7} className='Input_form' onChange={(e) => { setTextV7(e.target.value) }} /></td>
                             <td><input type='text' value={v18} className='Input_form' onChange={(e) => { setV18(e.target.value) }} /></td>
                             <td><input type='text' value={v19} className='Input_form' onChange={(e) => { setV19(e.target.value) }} /></td>
                             <td><input type='text' value={v20} className='Input_form' onChange={(e) => { setV20(e.target.value) }} /></td>
                             <td><input type='text' value={v21} className='Input_form' onChange={(e) => { setV21(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>United States</td>
+                            <td><input type='text' value={textv8} className='Input_form' onChange={(e) => { setTextV8(e.target.value) }} /></td>
                             <td><input type='text' value={v22} className='Input_form' onChange={(e) => { setV22(e.target.value) }} /></td>
                             <td><input type='text' value={v23} className='Input_form' onChange={(e) => { setV23(e.target.value) }} /></td>
                             <td><input type='text' value={v24} className='Input_form' onChange={(e) => { setV24(e.target.value) }} /></td>
                             <td><input type='text' value={v25} className='Input_form' onChange={(e) => { setV25(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Turkey</td>
+                            <td><input type='text' value={textv9} className='Input_form' onChange={(e) => { setTextV9(e.target.value) }} /></td>
                             <td><input type='text' value={v26} className='Input_form' onChange={(e) => { setV26(e.target.value) }} /></td>
                             <td><input type='text' value={v27} className='Input_form' onChange={(e) => { setV27(e.target.value) }} /></td>
                             <td><input type='text' value={v28} className='Input_form' onChange={(e) => { setV28(e.target.value) }} /></td>

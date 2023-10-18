@@ -23,6 +23,17 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
     const [v19, setV19] = useState(0.10);
     const [v20, setV20] = useState(100);
     const [v21, setV21] = useState(0.50);
+    const [textv0, setTextV0] = useState('Electricity');
+    const [textv1, setTextV1] = useState('Natural gas');
+    const [textv2, setTextV2] = useState('Cotton');
+    const [textv3, setTextV3] = useState('Polymer');
+    const [textv4, setTextV4] = useState('Chemical A');
+    const [textv5, setTextV5] = useState('Chemical B');
+    const [textv6, setTextV6] = useState('Cotton');
+    const [textv7, setTextV7] = useState('Polymer');
+    const [textv8, setTextV8] = useState('Chemical A');
+    const [textv9, setTextV9] = useState('Chemical B');
+    const [textv10, setTextV10] = useState('Waste sent to landfill');
 
     useEffect(() => {
         if (dataset1.Electricity) {
@@ -57,12 +68,12 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
                             <th>Emission factor (kg CO2e/kWh)</th>
                         </tr>
                         <tr>
-                            <td>Electricity</td>
+                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
                             <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
                             <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Natural gas</td>
+                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
                             <td><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
                             <td><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
                         </tr>
@@ -72,22 +83,22 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
                             <th>Emission factor (kg CO2e/kg)</th>
                         </tr>
                         <tr>
-                            <td>Cotton</td>
+                            <td><input type='text' value={textv2} className='Input_fo2m' onChange={(e) => { setTextV2(e.target.value) }} /></td>
                             <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
                             <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Polymer</td>
+                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
                             <td><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
                             <td><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Chemical A</td>
+                            <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
                             <td><input type='text' value={v8} className='Input_form' onChange={(e) => { setV8(e.target.value) }} /></td>
                             <td><input type='text' value={v9} className='Input_form' onChange={(e) => { setV9(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Chemical B</td>
+                            <td><input type='text' value={textv5} className='Input_form' onChange={(e) => { setTextV5(e.target.value) }} /></td>
                             <td><input type='text' value={v10} className='Input_form' onChange={(e) => { setV10(e.target.value) }} /></td>
                             <td><input type='text' value={v11} className='Input_form' onChange={(e) => { setV11(e.target.value) }} /></td>
                         </tr>
@@ -97,22 +108,22 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
                             <th>Vehicle type emission factor (kg CO2e/kg/km)</th>
                         </tr>
                         <tr>
-                            <td>Cotton</td>
+                            <td><input type='text' value={textv6} className='Input_form' onChange={(e) => { setTextV6(e.target.value) }} /></td>
                             <td><input type='text' value={v12} className='Input_form' onChange={(e) => { setV12(e.target.value) }} /></td>
                             <td><input type='text' value={v13} className='Input_form' onChange={(e) => { setV13(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Polymer</td>
+                            <td><input type='text' value={textv7} className='Input_form' onChange={(e) => { setTextV7(e.target.value) }} /></td>
                             <td><input type='text' value={v14} className='Input_form' onChange={(e) => { setV14(e.target.value) }} /></td>
                             <td><input type='text' value={v15} className='Input_form' onChange={(e) => { setV15(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Chemical A</td>
+                            <td><input type='text' value={textv8} className='Input_form' onChange={(e) => { setTextV8(e.target.value) }} /></td>
                             <td><input type='text' value={v16} className='Input_form' onChange={(e) => { setV16(e.target.value) }} /></td>
                             <td><input type='text' value={v17} className='Input_form' onChange={(e) => { setV17(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Chemical B</td>
+                            <td><input type='text' value={textv9} className='Input_form' onChange={(e) => { setTextV9(e.target.value) }} /></td>
                             <td><input type='text' value={v18} className='Input_form' onChange={(e) => { setV18(e.target.value) }} /></td>
                             <td><input type='text' value={v19} className='Input_form' onChange={(e) => { setV19(e.target.value) }} /></td>
                         </tr>
@@ -122,7 +133,7 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
                             <th>Emission factor (kg CO2e/kg of waste sent to landfill)</th>
                         </tr>
                         <tr>
-                            <td>Waste sent to landfill</td>
+                            <td><input type='text' value={textv10} className='Input_form' onChange={(e) => { setTextV10(e.target.value) }} /></td>
                             <td><input type='text' value={v20} className='Input_form' onChange={(e) => { setV20(e.target.value) }} /></td>
                             <td><input type='text' value={v21} className='Input_form' onChange={(e) => { setV21(e.target.value) }} /></td>
                         </tr>

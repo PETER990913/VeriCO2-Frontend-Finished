@@ -11,6 +11,16 @@ function CapitalGoodSupplier({ onChange, dataset, dataset1 }) {
     const [v7, setV7] = useState(0.25);
     const [v8, setV8] = useState(50000);
     const [v9, setV9] = useState(0.20);
+    const [textv0, setTextV0] = useState('Cement');
+    const [textv1, setTextV1] = useState('Supplier C');
+    const [textv2, setTextV2] = useState('Plaster');
+    const [textv3, setTextV3] = useState('Supplier D');
+    const [textv4, setTextV4] = useState('Paint');
+    const [textv5, setTextV5] = useState('Supplier E');
+    const [textv6, setTextV6] = useState('Timber');
+    const [textv7, setTextV7] = useState('Supplier F');
+    const [textv8, setTextV8] = useState('Concrete');
+    const [textv9, setTextV9] = useState('Supplier G');
 
     useEffect(() => {
         console.log('dataset', dataset)
@@ -63,32 +73,32 @@ function CapitalGoodSupplier({ onChange, dataset, dataset1 }) {
                             <th>Surpplier-specific emission factor(kgco2/kg)</th>
                         </tr>
                         <tr>
-                            <td>Cement</td>
-                            <td>Supplier C</td>
+                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
+                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
                             <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
                             <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Plaster</td>
-                            <td>Supplier D</td>
+                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
+                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
                             <td><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
                             <td><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Paint</td>
-                            <td>Supplier E</td>
+                            <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
+                            <td><input type='text' value={textv5} className='Input_form' onChange={(e) => { setTextV5(e.target.value) }} /></td>
                             <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
                             <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Timber</td>
-                            <td>Supplier F</td>
+                            <td><input type='text' value={textv6} className='Input_form' onChange={(e) => { setTextV6(e.target.value) }} /></td>
+                            <td><input type='text' value={textv7} className='Input_form' onChange={(e) => { setTextV7(e.target.value) }} /></td>
                             <td><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
                             <td><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Concrete</td>
-                            <td>Supplier G</td>
+                            <td><input type='text' value={textv8} className='Input_form' onChange={(e) => { setTextV8(e.target.value) }} /></td>
+                            <td><input type='text' value={textv9} className='Input_form' onChange={(e) => { setTextV9(e.target.value) }} /></td>
                             <td><input type='text' value={v8} className='Input_form' onChange={(e) => { setV8(e.target.value) }} /></td>
                             <td><input type='text' value={v9} className='Input_form' onChange={(e) => { setV9(e.target.value) }} /></td>
                         </tr>

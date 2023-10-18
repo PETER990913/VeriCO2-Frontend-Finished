@@ -13,6 +13,12 @@ function CapitalGoodProduct({ onChange, dataset1 }) {
     const [v9, setV9] = useState(3);
     const [v10, setV10] = useState(300);
     const [v11, setV11] = useState(3);
+    const [textv0, setTextV0] = useState('Hard drive');
+    const [textv1, setTextV1] = useState('Integrated circuits');
+    const [textv2, setTextV2] = useState('Liquid Crystal Display (LCD)');
+    const [textv3, setTextV3] = useState('Semiconductors');
+    const [textv4, setTextV4] = useState('Battery');
+    const [textv5, setTextV5] = useState('Keyboard');
     useEffect(() => {
         if (dataset1.Hard_drive) {
             setV1(dataset1.Hard_drive)
@@ -39,32 +45,32 @@ function CapitalGoodProduct({ onChange, dataset1 }) {
                             <th>Emission factor (kg CO2e/kg)</th>
                         </tr>
                         <tr>
-                            <td>Hard drive</td>
+                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
                             <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
                             <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Integrated circuits</td>
+                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
                             <td><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
                             <td><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Liquid Crystal Display (LCD)</td>
+                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
                             <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
                             <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Semiconductors</td>
+                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
                             <td><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
                             <td><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Battery</td>
+                            <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
                             <td><input type='text' value={v8} className='Input_form' onChange={(e) => { setV8(e.target.value) }} /></td>
                             <td><input type='text' value={v9} className='Input_form' onChange={(e) => { setV9(e.target.value) }} /></td>
                         </tr>
                         <tr>
-                            <td>Keyboard</td>
+                            <td><input type='text' value={textv5} className='Input_form' onChange={(e) => { setTextV5(e.target.value) }} /></td>
                             <td><input type='text' value={v10} className='Input_form' onChange={(e) => { setV10(e.target.value) }} /></td>
                             <td><input type='text' value={v11} className='Input_form' onChange={(e) => { setV11(e.target.value) }} /></td>
                         </tr>
