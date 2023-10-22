@@ -248,12 +248,12 @@ function DisplayPage() {
                                     <tr>
                                         <td>Purchased Goods and Services</td>
                                         <td>{displaymethod1()}</td>
-                                        <td>{displaycategory1().toFixed(2)}</td>
+                                        <td>{displaycategory1()?.toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td>Capital Goods</td>
                                         <td>{displaymethod2()}</td>
-                                        <td>{displaycategory2().toFixed(2)}</td>
+                                        <td>{displaycategory2()?.toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td>Fuel- and Energy-Related Activities Not Included in Scope 1 or Scope 2</td>
@@ -263,12 +263,12 @@ function DisplayPage() {
                                     <tr>
                                         <td>Upstream Transportation and Distribution</td>
                                         <td>{displaymethod4()}</td>
-                                        <td>{displaycategory4().toFixed(2)}</td>
+                                        <td>{displaycategory4()?.toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td>Waste Generated in Operations</td>
                                         <td>{displaymethod5()}</td>
-                                        <td>{displaycategory5().toFixed(2)}</td>
+                                        <td>{displaycategory5()?.toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td>Business Travel</td>
@@ -278,7 +278,7 @@ function DisplayPage() {
                                     <tr>
                                         <td>Employee Commuting</td>
                                         <td>{displaymethod7()}</td>
-                                        <td>{displaycategory7().toFixed(2)}</td>
+                                        <td>{displaycategory7()?.toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td>Upstream Leased Assets</td>
@@ -293,12 +293,12 @@ function DisplayPage() {
                                     <tr>
                                         <td>Processing of Sold Products</td>
                                         <td>{displaymethod10()}</td>
-                                        <td>{displaycategory10().toFixed(2)}</td>
+                                        <td>{displaycategory10()?.toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td>Use of Sold Products</td>
                                         <td>{displaymethod11()}</td>
-                                        <td>{displaycategory11().toFixed(2)}</td>
+                                        <td>{displaycategory11()?.toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td>End-of-Life Treatment of Sold Products</td>
@@ -313,12 +313,12 @@ function DisplayPage() {
                                     <tr>
                                         <td>Franchises</td>
                                         <td>{displaymethod14()}</td>
-                                        <td>{displaycategory14().toFixed(2)}</td>
+                                        <td>{displaycategory14()?.toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td>Investments</td>
                                         <td>{displaymethod15()}</td>
-                                        <td>{displaycategory15().toFixed(2)}</td>
+                                        <td>{displaycategory15()?.toFixed(2)}</td>
                                     </tr>
                                 </tbody>
                             </table>

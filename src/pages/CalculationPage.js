@@ -112,6 +112,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [result14_2, setResult14_2] = useState(0);
     dispatch(setTab(2));
     const [listData, setListData] = useState([])
+    console.log('listdata------------:', listData)
     const [category, setCategory] = useState(0)
     const [method, setMethod] = useState(0)
     const [startCalculation, setStartCalculation] = useState(false)
