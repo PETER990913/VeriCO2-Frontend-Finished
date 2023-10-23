@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss'
-import AddRow from '../../assets/images/Addrow.png'
 function PurchasedSupplier({ onChange, dataset, dataset1 }) {
     const [v0, setV0] = useState(200000);
     const [v1, setV1] = useState(0.15);

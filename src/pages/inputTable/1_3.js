@@ -140,8 +140,8 @@ function PurchasedAverage({ onChange, dataset1 }) {
                             <tr>
                                 <td><input type='text' value={textv10} className='Input_form' onChange={(e) => { setTextV10(e.target.value) }} /></td>
                                 <td><input type='text' value={v20} className='Input_form' onChange={(e) => { setV20(e.target.value) }} /></td>
-                                <td><input type='text' value={v21} className='Input_form' onChange={(e) => { setV21(e.target.value) }} /></td>
-                            </tr>
+                                <td><input type='text' value={v21} className='Input_form' onChange={(e) => { setV21(e.target.value) }} /></td>                          
+                           </tr>
                         }
                         <div className='button' onClick={handleAddNumber} >AddRow</div>
                     </tbody>
