@@ -1,60 +1,123 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss'
+import Add from '../../assets/images/Add.png'
+import Delete from '../../assets/images/Delete.png'
 function CapitalGoodHybrid({ onChange, dataset1 }) {
-    const [v0, setV0] = useState(5000);
-    const [v1, setV1] = useState(0.5);
-    const [v2, setV2] = useState(2500);
-    const [v3, setV3] = useState(0.2);
-    const [v4, setV4] = useState(5000);
-    const [v5, setV5] = useState(7.0);
-    const [v6, setV6] = useState(2500);
-    const [v7, setV7] = useState(5.0);
-    const [v8, setV8] = useState(500);
-    const [v9, setV9] = useState(2.0);
-    const [v10, setV10] = useState(500);
-    const [v11, setV11] = useState(1.5);
-    const [v12, setV12] = useState(1000);
-    const [v13, setV13] = useState(0.01);
-    const [v14, setV14] = useState(2500);
-    const [v15, setV15] = useState(0.02);
-    const [v16, setV16] = useState(800);
-    const [v17, setV17] = useState(0.05);
-    const [v18, setV18] = useState(200);
-    const [v19, setV19] = useState(0.10);
-    const [v20, setV20] = useState(100);
-    const [v21, setV21] = useState(0);
-    const [textv0, setTextV0] = useState('Electricity');
-    const [textv1, setTextV1] = useState('Natural gas');
-    const [textv2, setTextV2] = useState('Cotton');
-    const [textv3, setTextV3] = useState('Polymer');
-    const [textv4, setTextV4] = useState('Chemical A');
-    const [textv5, setTextV5] = useState('Chemical B');
-    const [textv6, setTextV6] = useState('Cotton');
-    const [textv7, setTextV7] = useState('Polymer');
-    const [textv8, setTextV8] = useState('Chemical A');
-    const [textv9, setTextV9] = useState('Chemical B');
-    const [textv10, setTextV10] = useState('Waste sent to landfill');
-
-    useEffect(() => {
-        if (dataset1.Electricity) {
-            setV1(dataset1.Electricity)
-            setV5(dataset1.Natural_gas)
-            setV7(dataset1.Cotton_mass)
-            setV9(dataset1.Polymer_mass)
-            setV11(dataset1.Chemical_A_mass)
-            setV13(dataset1.Chemical_B_mass)
-            setV15(dataset1.Cotton_distance)
-            setV17(dataset1.Polymer_distance)
-            setV19(dataset1.Chemical_A_distance)
-            setV21(dataset1.Chemical_B_distance)
-        }
-    }, [dataset1])
-
-    useEffect(() => {
-        onChange(Number(v0) * Number(v1) + Number(v2) * Number(v3) + Number(v4) * Number(v5) + Number(v6) * Number(v7) + Number(v8) * Number(v9) + Number(v10) * Number(v11) + Number(v4) * Number(v12) * Number(v13) + Number(v6) * Number(v14) * Number(v15) + Number(v8) * Number(v16) * Number(v17) + Number(v10) * Number(v18) * Number(v19) + Number(v20) * Number(v21))
-    }, [
-        v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21
+    const [rows, setRows] = useState([
+        {
+            id: 0,
+            gool: 'Electricity',
+            qp: '5000',
+            ssef: '0.5'
+        },
+        {
+            id: 1,
+            gool: 'Natural gas',
+            qp: '2500',
+            ssef: '0.2'
+        },
     ])
+
+    const [rows1, setRows1] = useState([
+        {
+            id: 0,
+            gool: 'Cotton',
+            qp: '5000',
+            ssef: '7'
+        },
+        {
+            id: 1,
+            gool: 'Polymer',
+            qp: '2500',
+            ssef: '5'
+        },
+        {
+            id: 2,
+            gool: 'Chemical A',
+            qp: '500',
+            ssef: '2'
+        },
+        {
+            id: 3,
+            gool: 'Chemical B',
+            qp: '500',
+            ssef: '1.5'
+        },
+    ])
+
+    const [rows2, setRows2] = useState([
+        {
+            id: 0,
+            gool: 'Cotton',
+            qp: '1000',
+            ssef: '0.01'
+        },
+        {
+            id: 1,
+            gool: 'Polymer',
+            qp: '2500',
+            ssef: '0.02'
+        },
+        {
+            id: 2,
+            gool: 'Chemical A',
+            qp: '800',
+            ssef: '0.05'
+        },
+        {
+            id: 3,
+            gool: 'Chemical B',
+            qp: '200',
+            ssef: '0.1'
+        },
+    ])
+
+    const [rows3, setRows3] = useState([
+        {
+            id: 0,
+            gool: 'Waste sent to landfill',
+            qp: '100',
+            ssef: '0'
+        },
+    ])
+
+
+    useEffect(() => {
+        let sum = 0
+        let sum1 = 0
+        let sum2 = 0
+        let sum3 = 0
+        rows.forEach(row => {
+            sum += parseFloat(row.qp) * parseFloat(row.ssef);
+        })
+        rows1.forEach(row1 => {
+            sum1 += parseFloat(row1.qp) * parseFloat(row1.ssef);
+        })
+        rows2.forEach(row2 => {
+            sum2 += parseFloat(row2.qp) * parseFloat(row2.ssef);
+        })
+        rows3.forEach(row3 => {
+            sum3 += parseFloat(row3.qp) * parseFloat(row3.ssef);
+        })
+        onChange(sum + sum1 + sum2 + sum3)
+        console.log(sum + sum1 + sum2 + sum3);
+    }, [rows], [rows1], [rows2], [rows3])
+
+    // useEffect(() => {
+    //     if (dataset1.Electricity) {
+    //         setV1(dataset1.Electricity)
+    //         setV5(dataset1.Natural_gas)
+    //         setV7(dataset1.Cotton_mass)
+    //         setV9(dataset1.Polymer_mass)
+    //         setV11(dataset1.Chemical_A_mass)
+    //         setV13(dataset1.Chemical_B_mass)
+    //         setV15(dataset1.Cotton_distance)
+    //         setV17(dataset1.Polymer_distance)
+    //         setV19(dataset1.Chemical_A_distance)
+    //         setV21(dataset1.Chemical_B_distance)
+    //     }
+    // }, [dataset1])
+
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div>
@@ -67,76 +130,256 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
                             <th>Amount (kWh)</th>
                             <th>Emission factor (kg CO2e/kWh)</th>
                         </tr>
-                        <tr>
-                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
-                            <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
-                            <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
-                            <td><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
-                            <td><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
-                        </tr>
+                        {rows.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.gool = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.qp = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                        setRows(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.ssef = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                gool: '',
+                                                supplier: '',
+                                                qp: '',
+                                                ssef: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}
                         <tr>
                             <th></th>
                             <th>Mass purchased (kg)</th>
                             <th>Emission factor (kg CO2e/kg)</th>
                         </tr>
-                        <tr>
-                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
-                            <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
-                            <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
-                            <td><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
-                            <td><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
-                            <td><input type='text' value={v8} className='Input_form' onChange={(e) => { setV8(e.target.value) }} /></td>
-                            <td><input type='text' value={v9} className='Input_form' onChange={(e) => { setV9(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv5} className='Input_form' onChange={(e) => { setTextV5(e.target.value) }} /></td>
-                            <td><input type='text' value={v10} className='Input_form' onChange={(e) => { setV10(e.target.value) }} /></td>
-                            <td><input type='text' value={v11} className='Input_form' onChange={(e) => { setV11(e.target.value) }} /></td>
-                        </tr>
+                        {rows1.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                    setRows1(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.gool = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                    setRows1(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.qp = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                        setRows1(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.ssef = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows1(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                gool: '',
+                                                qp: '',
+                                                ssef: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows1(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}
                         <tr>
                             <th></th>
                             <th>Distance of transport (km)</th>
                             <th>Vehicle type emission factor (kg CO2e/kg/km)</th>
                         </tr>
-                        <tr>
-                            <td><input type='text' value={textv6} className='Input_form' onChange={(e) => { setTextV6(e.target.value) }} /></td>
-                            <td><input type='text' value={v12} className='Input_form' onChange={(e) => { setV12(e.target.value) }} /></td>
-                            <td><input type='text' value={v13} className='Input_form' onChange={(e) => { setV13(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv7} className='Input_form' onChange={(e) => { setTextV7(e.target.value) }} /></td>
-                            <td><input type='text' value={v14} className='Input_form' onChange={(e) => { setV14(e.target.value) }} /></td>
-                            <td><input type='text' value={v15} className='Input_form' onChange={(e) => { setV15(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv8} className='Input_form' onChange={(e) => { setTextV8(e.target.value) }} /></td>
-                            <td><input type='text' value={v16} className='Input_form' onChange={(e) => { setV16(e.target.value) }} /></td>
-                            <td><input type='text' value={v17} className='Input_form' onChange={(e) => { setV17(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv9} className='Input_form' onChange={(e) => { setTextV9(e.target.value) }} /></td>
-                            <td><input type='text' value={v18} className='Input_form' onChange={(e) => { setV18(e.target.value) }} /></td>
-                            <td><input type='text' value={v19} className='Input_form' onChange={(e) => { setV19(e.target.value) }} /></td>
-                        </tr>
+
+                        {rows2.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                    setRows2(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.gool = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                    setRows2(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.qp = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                        setRows2(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.ssef = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows2(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                gool: '',
+                                                supplier: '',
+                                                qp: '',
+                                                ssef: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows2(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}
                         <tr>
                             <th></th>
                             <th>Amount (kg)</th>
                             <th>Emission factor (kg CO2e/kg of waste sent to landfill)</th>
                         </tr>
-                        <tr>
-                            <td><input type='text' value={textv10} className='Input_form' onChange={(e) => { setTextV10(e.target.value) }} /></td>
-                            <td><input type='text' value={v20} className='Input_form' onChange={(e) => { setV20(e.target.value) }} /></td>
-                            <td><input type='text' value={v21} className='Input_form' onChange={(e) => { setV21(e.target.value) }} /></td>
-                        </tr>
+                        {rows3.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                    setRows3(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.gool = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                    setRows3(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.qp = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                        setRows3(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.ssef = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows3(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                gool: '',
+                                                qp: '',
+                                                ssef: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows3(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

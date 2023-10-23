@@ -52,28 +52,7 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
             return prev
         })
     }, [dataset])
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       try {    
-    //         // Update the rows state with the fetched data
-    //         if (dataset?.length > 0)
-    //         setRows(prev => {
-    //             console.log('--------------------')
-    //             dataset[0].forEach((d, idx) => {
-    //             prev[idx].qp = d[0];
-    //             prev[idx].ssef = d[1];
-    //           });
-    //           return prev;
-    //         });
-    //       } catch (error) {
-    //         console.error(error);
-    //       }
-    //     };
-    
-    //     fetchData();
-    //   }, []); 
-
+ 
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {
@@ -165,41 +144,7 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
                                     }} />
                                 </td>
                             </tr>
-                        )}
-                        {/* <tr>
-                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
-                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
-                            <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
-                            <td className='AddStyle'>
-                                <input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} />
-                                <img src={Add} alt='Add' className='AddButton' />
-                                <img src={Delete} alt='Delete' className='AddButton' />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
-                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
-                            <td><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
-                            <td><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
-                            <td><input type='text' value={textv5} className='Input_form' onChange={(e) => { setTextV5(e.target.value) }} /></td>
-                            <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
-                            <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv6} className='Input_form' onChange={(e) => { setTextV6(e.target.value) }} /></td>
-                            <td><input type='text' value={textv7} className='Input_form' onChange={(e) => { setTextV7(e.target.value) }} /></td>
-                            <td><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
-                            <td><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv8} className='Input_form' onChange={(e) => { setTextV8(e.target.value) }} /></td>
-                            <td><input type='text' value={textv9} className='Input_form' onChange={(e) => { setTextV9(e.target.value) }} /></td>
-                            <td><input type='text' value={v8} className='Input_form' onChange={(e) => { setV8(e.target.value) }} /></td>
-                            <td><input type='text' value={v9} className='Input_form' onChange={(e) => { setV9(e.target.value) }} /></td>
-                        </tr> */}
+                        )}                        
                     </tbody>
                 </table>
             </div>
