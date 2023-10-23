@@ -36,6 +36,7 @@ import CapitalGoodHybrid from './inputTable/2_2';
 import CapitalGoodProduct from './inputTable/2_3';
 import CapitalGoodSpend from './inputTable/2_4';
 import DownstreamTransportation from './inputTable/8_1';
+import PurchasedSupplierTest from './inputTable/1_1test';
 
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const fileRef = useRef()
@@ -136,7 +137,8 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         }
     }, [SERVER_URL, navigate])
     const displaycase = () => {
-        if (category === 0 & method === 0) return <PurchasedSupplier dataset={dataset} dataset1={dataset1} onChange={(data) => { setResult1_1(data) }} />
+        // if (category === 0 & method === 0) return <PurchasedSupplier dataset={dataset} dataset1={dataset1} onChange={(data) => { setResult1_1(data) }} />
+        if (category === 0 & method === 0) return <PurchasedSupplierTest dataset={dataset} dataset1={dataset1} onChange={(data) => { setResult1_1(data) }} />
         if (category === 0 & method === 1) return <PurchasedHybrid dataset1={dataset1} onChange={(data) => { setResult1_2(data) }} />
         if (category === 0 & method === 2) return <PurchasedAverage dataset1={dataset1} onChange={(data) => { setResult1_3(data) }} />
         if (category === 0 & method === 3) return <PurchasedSpend dataset1={dataset1} onChange={(data) => { setResult1_4(data) }} />

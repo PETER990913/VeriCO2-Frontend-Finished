@@ -2109,6 +2109,13 @@ body {
   margin-left: -10px;
   font-weight: bold;
 }
-// .button_add {
-//   font-size: 15px;
-// }
+.AddButton {
+  width: 13px;
+  height: 13px;
+  align-items: center;
+}
+.AddStyle {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss'
+import Add from '../../assets/images/Add.png'
+import Delete from '../../assets/images/Delete.png'
 function PurchasedSupplier({ onChange, dataset, dataset1 }) {
     const [v0, setV0] = useState(200000);
     const [v1, setV1] = useState(0.15);
@@ -20,7 +22,7 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
     const [textv6, setTextV6] = useState('Timber');
     const [textv7, setTextV7] = useState('Supplier F');
     const [textv8, setTextV8] = useState('Concrete');
-    const [textv9, setTextV9] = useState('Supplier G');   
+    const [textv9, setTextV9] = useState('Supplier G');
     useEffect(() => {
         console.log('dataset', dataset)
         if (dataset.length) {
@@ -72,11 +74,16 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                             <th>Quantities purchased(kg)</th>
                             <th>Surpplier-specific emission factor(kgco2/kg)</th>
                         </tr>
+                        
                         <tr>
                             <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
                             <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
                             <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
-                            <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
+                            <td className='AddStyle'>
+                                <input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} />
+                                <img src={Add} alt='Add' className='AddButton' />
+                                <img src={Delete} alt='Delete' className='AddButton' />
+                            </td>
                         </tr>
                         <tr>
                             <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
