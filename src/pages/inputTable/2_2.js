@@ -23,20 +23,6 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
     const [v19, setV19] = useState(0.10);
     const [v20, setV20] = useState(100);
     const [v21, setV21] = useState(0);
-    const [v22, setV22] = useState(0);
-    const [v23, setV23] = useState(0);
-    const [v24, setV24] = useState(0);
-    const [v25, setV25] = useState(0);
-    const [v26, setV26] = useState(0);
-    const [v27, setV27] = useState(0);
-    const [v28, setV28] = useState(0);
-    const [v29, setV29] = useState(0);
-    const [v30, setV30] = useState(0);
-    const [v31, setV31] = useState(0);
-    const [AddNumber, setAddNumber] = useState(0)
-    const handleAddNumber = () => {
-        setAddNumber(AddNumber + 1)
-    }
     const [textv0, setTextV0] = useState('Electricity');
     const [textv1, setTextV1] = useState('Natural gas');
     const [textv2, setTextV2] = useState('Cotton');
@@ -48,11 +34,6 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
     const [textv8, setTextV8] = useState('Chemical A');
     const [textv9, setTextV9] = useState('Chemical B');
     const [textv10, setTextV10] = useState('Waste sent to landfill');
-    const [textv11, setTextV11] = useState('B');
-    const [textv12, setTextV12] = useState('B');
-    const [textv13, setTextV13] = useState('B');
-    const [textv14, setTextV14] = useState('B');
-    const [textv15, setTextV15] = useState('B');
 
     useEffect(() => {
         if (dataset1.Electricity) {
@@ -70,9 +51,9 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
     }, [dataset1])
 
     useEffect(() => {
-        onChange(Number(v0) * Number(v1) + Number(v2) * Number(v3) + Number(v4) * Number(v5) + Number(v6) * Number(v7) + Number(v8) * Number(v9) + Number(v10) * Number(v11) + Number(v4) * Number(v12) * Number(v13) + Number(v6) * Number(v14) * Number(v15) + Number(v8) * Number(v16) * Number(v17) + Number(v10) * Number(v18) * Number(v19) + Number(v20) * Number(v21) + Number(v22) * Number(v23) + Number(v24) * Number(v25) + Number(v26) * Number(v27) + Number(v28) * Number(v29) + Number(v30) * Number(v31))
+        onChange(Number(v0) * Number(v1) + Number(v2) * Number(v3) + Number(v4) * Number(v5) + Number(v6) * Number(v7) + Number(v8) * Number(v9) + Number(v10) * Number(v11) + Number(v4) * Number(v12) * Number(v13) + Number(v6) * Number(v14) * Number(v15) + Number(v8) * Number(v16) * Number(v17) + Number(v10) * Number(v18) * Number(v19) + Number(v20) * Number(v21))
     }, [
-        v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31
+        v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21
     ])
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
@@ -156,57 +137,6 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
                             <td><input type='text' value={v20} className='Input_form' onChange={(e) => { setV20(e.target.value) }} /></td>
                             <td><input type='text' value={v21} className='Input_form' onChange={(e) => { setV21(e.target.value) }} /></td>
                         </tr>
-                        {AddNumber === 0 ?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv11} className='Input_form' onChange={(e) => { setTextV11(e.target.value) }} /></td>
-                                <td><input type='text' value={v22} className='Input_form' onChange={(e) => { setV22(e.target.value) }} /></td>
-                                <td><input type='text' value={v23} className='Input_form' onChange={(e) => { setV23(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        {AddNumber === 0 || AddNumber === 1 ?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv12} className='Input_form' onChange={(e) => { setTextV12(e.target.value) }} /></td>
-                                <td><input type='text' value={v24} className='Input_form' onChange={(e) => { setV24(e.target.value) }} /></td>
-                                <td><input type='text' value={v25} className='Input_form' onChange={(e) => { setV25(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        {AddNumber === 0 || AddNumber === 1 || AddNumber === 2 ?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv13} className='Input_form' onChange={(e) => { setTextV13(e.target.value) }} /></td>
-                                <td><input type='text' value={v26} className='Input_form' onChange={(e) => { setV26(e.target.value) }} /></td>
-                                <td><input type='text' value={v27} className='Input_form' onChange={(e) => { setV27(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        {AddNumber === 0 || AddNumber === 1 || AddNumber === 2 || AddNumber === 3 ?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv14} className='Input_form' onChange={(e) => { setTextV14(e.target.value) }} /></td>
-                                <td><input type='text' value={v28} className='Input_form' onChange={(e) => { setV28(e.target.value) }} /></td>
-                                <td><input type='text' value={v29} className='Input_form' onChange={(e) => { setV29(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        {AddNumber === 0 || AddNumber === 1 || AddNumber === 2 || AddNumber === 3 || AddNumber === 4 ?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv15} className='Input_form' onChange={(e) => { setTextV15(e.target.value) }} /></td>
-                                <td><input type='text' value={v30} className='Input_form' onChange={(e) => { setV30(e.target.value) }} /></td>
-                                <td><input type='text' value={v31} className='Input_form' onChange={(e) => { setV31(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        <div className='button' onClick={handleAddNumber} >AddRow</div>
                     </tbody>
                 </table>
             </div>

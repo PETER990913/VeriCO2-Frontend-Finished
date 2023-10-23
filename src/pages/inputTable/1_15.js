@@ -33,30 +33,6 @@ function FuelTransmission({ onChange, dataset1 }) {
     const [v29, setV29] = useState("N/A");
     const [v30, setV30] = useState(550000);
     const [v31, setV31] = useState("N/A");
-    const [AddNumber, setAddNumber] = useState(0)
-    const handleAddNumber = () => {
-        setAddNumber(AddNumber + 1)
-    }
-    // const [v32, setV32] = useState(0);
-    // const [v33, setV33] = useState(0);
-    // const [v34, setV34] = useState(0);
-    // const [v35, setV35] = useState(0);
-    // const [v36, setV36] = useState(0);
-    // const [v37, setV37] = useState(0);
-    // const [v38, setV38] = useState(0);
-    // const [v39, setV39] = useState(0);
-    // const [v40, setV40] = useState(0);
-    // const [v41, setV41] = useState(0);
-    // const [v42, setV42] = useState(0);
-    // const [v43, setV43] = useState(0);
-    // const [v44, setV44] = useState(0);
-    // const [v45, setV45] = useState(0);
-    // const [v46, setV46] = useState(0);
-    // const [v47, setV47] = useState(0);
-    // const [v48, setV48] = useState(0);
-    // const [v49, setV49] = useState(0);
-    // const [v50, setV50] = useState(0);
-    // const [v51, setV51] = useState(0);
     const [textv0, setTextV0] = useState('Australia');
     const [textv1, setTextV1] = useState('Canada');
     const [textv2, setTextV2] = useState('India');
@@ -67,11 +43,6 @@ function FuelTransmission({ onChange, dataset1 }) {
     const [textv7, setTextV7] = useState('India');
     const [textv8, setTextV8] = useState('United States');
     const [textv9, setTextV9] = useState('Turkey');
-    // const [textv10, setTextV10] = useState('');
-    // const [textv11, setTextV11] = useState('');
-    // const [textv12, setTextV12] = useState('');
-    // const [textv13, setTextV13] = useState('');
-    // const [textv14, setTextV14] = useState('');
 
     useEffect(() => {
         if (dataset1.Australia_Upstream_emission_factor) {

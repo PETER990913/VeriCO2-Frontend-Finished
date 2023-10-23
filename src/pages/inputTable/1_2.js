@@ -37,6 +37,10 @@ function PurchasedHybrid({ onChange, dataset1 }) {
     const handleAddNumber = () => {
         setAddNumber(AddNumber + 1)
     }
+    const [AddNumber1, setAddNumber1] = useState(0)
+    const handleAddNumber1 = () => {
+        setAddNumber1(AddNumber1 + 1)
+    }
     const [textv0, setTextV0] = useState('Electricity');
     const [textv1, setTextV1] = useState('Natural gas');
     const [textv2, setTextV2] = useState('Cotton');
@@ -145,7 +149,7 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <td><input type='text' value={textv9} className='Input_form' onChange={(e) => { setTextV9(e.target.value) }} /></td>
                             <td><input type='text' value={v18} className='Input_form' onChange={(e) => { setV18(e.target.value) }} /></td>
                             <td><input type='text' value={v19} className='Input_form' onChange={(e) => { setV19(e.target.value) }} /></td>
-                        </tr>
+                        </tr>                        
                         <tr>
                             <th></th>
                             <th>Amount (kg)</th>
@@ -155,58 +159,7 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <td><input type='text' value={textv10} className='Input_form' onChange={(e) => { setTextV10(e.target.value) }} /></td>
                             <td><input type='text' value={v20} className='Input_form' onChange={(e) => { setV20(e.target.value) }} /></td>
                             <td><input type='text' value={v21} className='Input_form' onChange={(e) => { setV21(e.target.value) }} /></td>
-                        </tr>
-                        {AddNumber === 0 ?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv11} className='Input_form' onChange={(e) => { setTextV11(e.target.value) }} /></td>
-                                <td><input type='text' value={v22} className='Input_form' onChange={(e) => { setV22(e.target.value) }} /></td>
-                                <td><input type='text' value={v23} className='Input_form' onChange={(e) => { setV23(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        {AddNumber === 0 || AddNumber === 1?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv12} className='Input_form' onChange={(e) => { setTextV12(e.target.value) }} /></td>
-                                <td><input type='text' value={v24} className='Input_form' onChange={(e) => { setV24(e.target.value) }} /></td>
-                                <td><input type='text' value={v25} className='Input_form' onChange={(e) => { setV25(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        {AddNumber === 0 || AddNumber === 1 || AddNumber === 2?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv13} className='Input_form' onChange={(e) => { setTextV13(e.target.value) }} /></td>
-                                <td><input type='text' value={v26} className='Input_form' onChange={(e) => { setV26(e.target.value) }} /></td>
-                                <td><input type='text' value={v27} className='Input_form' onChange={(e) => { setV27(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        {AddNumber === 0 || AddNumber === 1 || AddNumber === 2 || AddNumber === 3?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv14} className='Input_form' onChange={(e) => { setTextV14(e.target.value) }} /></td>
-                                <td><input type='text' value={v28} className='Input_form' onChange={(e) => { setV28(e.target.value) }} /></td>
-                                <td><input type='text' value={v29} className='Input_form' onChange={(e) => { setV29(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        {AddNumber === 0 || AddNumber === 1 || AddNumber === 2 || AddNumber === 3 || AddNumber === 4 ?
-                            <tr>
-                            </tr>
-                            :
-                            <tr>
-                                <td><input type='text' value={textv15} className='Input_form' onChange={(e) => { setTextV15(e.target.value) }} /></td>
-                                <td><input type='text' value={v30} className='Input_form' onChange={(e) => { setV30(e.target.value) }} /></td>
-                                <td><input type='text' value={v31} className='Input_form' onChange={(e) => { setV31(e.target.value) }} /></td>
-                            </tr>
-                        }
-                        <div className='button' onClick={handleAddNumber} >AddRow</div>
+                        </tr>                        
                     </tbody>
                 </table>
             </div>
