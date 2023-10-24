@@ -1,64 +1,88 @@
 import React, { useState, useEffect } from 'react'
 import '../../App.scss'
+import Add from '../../assets/images/Add.png'
+import Delete from '../../assets/images/Delete.png'
 function FuelTransmission({ onChange, dataset1 }) {
-    const [v0, setV0] = useState(50000);
-    const [v1, setV1] = useState("N/A");
-    const [v2, setV2] = useState(60000);
-    const [v3, setV3] = useState(50000);
-    const [v4, setV4] = useState(40000);
-    const [v5, setV5] = useState("N/A");
-    const [v6, setV6] = useState(200000);
-    const [v7, setV7] = useState("N/A");
-    const [v8, setV8] = useState(0.12);
-    const [v9, setV9] = useState(0.8);
-    const [v10, setV10] = useState(10);
-    const [v11, setV11] = useState("N/A");
-    const [v12, setV12] = useState(0.10);
-    const [v13, setV13] = useState(0.4);
-    const [v14, setV14] = useState(13);
-    const [v15, setV15] = useState(0.05);
-    const [v16, setV16] = useState(0.15);
-    const [v17, setV17] = useState(5);
-    const [v18, setV18] = useState(0.15);
-    const [v19, setV19] = useState(0.8);
-    const [v20, setV20] = useState(15);
-    const [v21, setV21] = useState("N/A");
-    const [v22, setV22] = useState(0.10);
-    const [v23, setV23] = useState(0.5);
-    const [v24, setV24] = useState(10);
-    const [v25, setV25] = useState("N/A");
-    const [v26, setV26] = useState(0.05);
-    const [v27, setV27] = useState(0.4);
-    const [v28, setV28] = useState(12);
-    const [v29, setV29] = useState("N/A");
-    const [v30, setV30] = useState(550000);
-    const [v31, setV31] = useState("N/A");
-    const [textv0, setTextV0] = useState('Australia');
-    const [textv1, setTextV1] = useState('Canada');
-    const [textv2, setTextV2] = useState('India');
-    const [textv3, setTextV3] = useState('United States');
-    const [textv4, setTextV4] = useState('Turkey');
-    const [textv5, setTextV5] = useState('Australia');
-    const [textv6, setTextV6] = useState('Canada');
-    const [textv7, setTextV7] = useState('India');
-    const [textv8, setTextV8] = useState('United States');
-    const [textv9, setTextV9] = useState('Turkey');
-
-    useEffect(() => {
-        if (dataset1.Australia_Upstream_emission_factor) {
-            setV8(dataset1.Australia_Upstream_emission_factor)
-            setV12(dataset1.Canada_Upstream_emission_factor)
-            setV18(dataset1.India_Upstream_emission_factor)
-            setV22(dataset1.United_States_Upstream_emission_factor)
-            setV26(dataset1.Turkey_Upstream_emission_factor)
-        }
-    }, [dataset1])
-
-    useEffect(() => {
-        onChange(Number(v0) * Number(v8) + Number(v2) * Number(v12) + Number(v4) * Number(v18) + Number(v30) * Number(v22) + Number(v6) * Number(v26) + Number(v0) * Number(v9) * Number(v10) / 100 + Number(v2) * Number(v13) * Number(v14) / 100 + Number(v3) * Number(v16) * Number(v17) / 100 + Number(v4) * Number(v19) * Number(v20) / 100 + Number(v30) * Number(v23) * Number(v24) / 100 + Number(v6) * Number(v27) * Number(v28) / 100 + Number(v3) * Number(v15))
-    }, [
-        v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31
+    const [rows, setRows] = useState([
+        {
+            id: 0,
+            Country: 'Australia',
+            EP: '50000',
+            DHP: '0',
+            Country1: 'Australia',
+            UEF: '0.12',
+            CEF: '0.8',
+            TDR: '10',
+            UEFH: '0'
+        },
+        {
+            id: 1,
+            Country: 'Canada',
+            EP: '60000',
+            DHP: '50000',
+            Country1: 'Canada',
+            UEF: '0.1',
+            CEF: '0.4',
+            TDR: '13',
+            UEFH: '0.05'
+        },
+        {
+            id: 2,
+            Country: 'India',
+            EP: '40000',
+            DHP: '0',
+            Country1: 'India',
+            UEF: '0.15',
+            CEF: '0.8',
+            TDR: '15',
+            UEFH: '0'
+        },
+        {
+            id: 3,
+            Country: 'United States',
+            EP: '550000',
+            DHP: '0',
+            Country1: 'United States',
+            UEF: '0.1',
+            CEF: '0.5',
+            TDR: '10',
+            UEFH: '0'
+        },
+        {
+            id: 4,
+            Country: 'Turkey',
+            EP: '200000',
+            DHP: '0',
+            Country1: 'Turkey',
+            UEF: '0.05',
+            CEF: '0.4',
+            TDR: '12',
+            UEFH: '0'
+        },
     ])
+
+    useEffect(() => {
+        let sum = 0
+        rows.forEach(row => {
+            sum += parseFloat(row.EP) * parseFloat(row.UEF) + parseFloat(row.EP) * parseFloat(row.CEF) * parseFloat(row.TDR) / 100 + parseFloat(row.DHP) * parseFloat(row.UEFH);
+        })
+        onChange(sum)
+        console.log(sum);
+    }, [rows])
+
+
+
+    // useEffect(() => {
+    //     if (dataset1.Australia_Upstream_emission_factor) {
+    //         setV8(dataset1.Australia_Upstream_emission_factor)
+    //         setV12(dataset1.Canada_Upstream_emission_factor)
+    //         setV18(dataset1.India_Upstream_emission_factor)
+    //         setV22(dataset1.United_States_Upstream_emission_factor)
+    //         setV26(dataset1.Turkey_Upstream_emission_factor)
+    //     }
+    // }, [dataset1])
+
+
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div>
@@ -71,31 +95,42 @@ function FuelTransmission({ onChange, dataset1 }) {
                             <th colSpan={2}>Electricity purchased (kWh) </th>
                             <th colSpan={2}>District heating purchased (kWh)</th>
                         </tr>
-                        <tr>
-                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v30} className='Input_form' onChange={(e) => { setV30(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v31} className='Input_form' onChange={(e) => { setV31(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
-                            <td colSpan={2}><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
-                        </tr>
+                        {rows.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.Country} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.Country = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td colSpan={2}><input type='text' value={row.EP} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.EP = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td colSpan={2}><input type='text' value={row.DHP} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.DHP = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                            </tr>
+                        )}
                         <tr>
                             <th>Country name</th>
                             <th>Upstream emission factor of purchased electricity (kg CO2e/kWh)</th>
@@ -103,45 +138,90 @@ function FuelTransmission({ onChange, dataset1 }) {
                             <th>T&D loss rate (percent)</th>
                             <th>Upstream emission factor of purchased heating (kg CO2e/ kWh)</th>
                         </tr>
-                        <tr>
-                            <td><input type='text' value={textv5} className='Input_form' onChange={(e) => { setTextV5(e.target.value) }} /></td>
-                            <td><input type='text' value={v8} className='Input_form' onChange={(e) => { setV8(e.target.value) }} /></td>
-                            <td><input type='text' value={v9} className='Input_form' onChange={(e) => { setV9(e.target.value) }} /></td>
-                            <td><input type='text' value={v10} className='Input_form' onChange={(e) => { setV10(e.target.value) }} /></td>
-                            <td><input type='text' value={v11} className='Input_form' onChange={(e) => { setV11(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td rowSpan={2}><input type='text' value={textv6} className='Input_form' onChange={(e) => { setTextV6(e.target.value) }} /></td>
-                            <td rowSpan={2}><input type='text' value={v12} className='Input_form' onChange={(e) => { setV12(e.target.value) }} /></td>
-                            <td><input type='text' value={v13} className='Input_form' onChange={(e) => { setV13(e.target.value) }} /></td>
-                            <td><input type='text' value={v14} className='Input_form' onChange={(e) => { setV14(e.target.value) }} /></td>
-                            <td rowSpan={2}><input type='text' value={v15} className='Input_form' onChange={(e) => { setV15(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={v16} className='Input_form' onChange={(e) => { setV16(e.target.value) }} /></td>
-                            <td><input type='text' value={v17} className='Input_form' onChange={(e) => { setV17(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv7} className='Input_form' onChange={(e) => { setTextV7(e.target.value) }} /></td>
-                            <td><input type='text' value={v18} className='Input_form' onChange={(e) => { setV18(e.target.value) }} /></td>
-                            <td><input type='text' value={v19} className='Input_form' onChange={(e) => { setV19(e.target.value) }} /></td>
-                            <td><input type='text' value={v20} className='Input_form' onChange={(e) => { setV20(e.target.value) }} /></td>
-                            <td><input type='text' value={v21} className='Input_form' onChange={(e) => { setV21(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv8} className='Input_form' onChange={(e) => { setTextV8(e.target.value) }} /></td>
-                            <td><input type='text' value={v22} className='Input_form' onChange={(e) => { setV22(e.target.value) }} /></td>
-                            <td><input type='text' value={v23} className='Input_form' onChange={(e) => { setV23(e.target.value) }} /></td>
-                            <td><input type='text' value={v24} className='Input_form' onChange={(e) => { setV24(e.target.value) }} /></td>
-                            <td><input type='text' value={v25} className='Input_form' onChange={(e) => { setV25(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={textv9} className='Input_form' onChange={(e) => { setTextV9(e.target.value) }} /></td>
-                            <td><input type='text' value={v26} className='Input_form' onChange={(e) => { setV26(e.target.value) }} /></td>
-                            <td><input type='text' value={v27} className='Input_form' onChange={(e) => { setV27(e.target.value) }} /></td>
-                            <td><input type='text' value={v28} className='Input_form' onChange={(e) => { setV28(e.target.value) }} /></td>
-                            <td><input type='text' value={v29} className='Input_form' onChange={(e) => { setV29(e.target.value) }} /></td>
-                        </tr>
+                        {rows.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.Country1} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.Country1 = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.UEF} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.UEF = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td><input type='text' value={row.CEF} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.CEF = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td><input type='text' value={row.TDR} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.TDR = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.UEFH} className='Input_form' onChange={(e) => {
+                                        setRows(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.UEFH = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                Country: '',
+                                                EP: '',
+                                                DHP: '',
+                                                Country1: '',
+                                                UEF: '',
+                                                CEF: '',
+                                                TDR: '',
+                                                UEFH: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

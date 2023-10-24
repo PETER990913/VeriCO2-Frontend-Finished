@@ -1,108 +1,116 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
-function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
+function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
     const [rows, setRows] = useState([
         {
             id: 0,
-            gool: 'Cement',
-            supplier: 'Supplier C',
-            qp: '200000',
-            ssef: '0.15'
+            Franchises: '1',
+            scope1: '100000',
+            scope2: '20000'
         },
         {
             id: 1,
-            gool: 'Plaster',
-            supplier: 'Supplier D',
-            qp: '600000',
-            ssef: '0.1'
+            Franchises: '2',
+            scope1: '25000',
+            scope2: '10000'
         },
         {
             id: 2,
-            gool: 'Paint',
-            supplier: 'Supplier E',
-            qp: '200000',
-            ssef: '0.1'
+            Franchises: '3',
+            scope1: '30000',
+            scope2: '10000'
         },
         {
             id: 3,
-            gool: 'Timber',
-            supplier: 'Supplier F',
-            qp: '100000',
-            ssef: '0.25'
+            Franchises: '4',
+            scope1: '90000',
+            scope2: '30000'
         },
         {
             id: 4,
-            gool: 'Concrete',
-            supplier: 'Supplier G',
-            qp: '50000',
-            ssef: '0.2'
+            Franchises: '5',
+            scope1: '30000',
+            scope2: '10000'
+        },
+        {
+            id: 5,
+            Franchises: '6',
+            scope1: '40000',
+            scope2: '10000'
+        },
+        {
+            id: 6,
+            Franchises: '7',
+            scope1: '60000',
+            scope2: '20000'
+        },
+        {
+            id: 7,
+            Franchises: '8',
+            scope1: '10000',
+            scope2: '90000'
         },
     ])
 
     useEffect(() => {
-        console.log('Dataset:::', dataset[0])
-        if (dataset?.length > 0)
-        setRows(prev => {
-                dataset[0].forEach((d, idx) => {
-                    prev[idx].qp = d[0]
-                    prev[idx].ssef = d[1]
-                })
-            return prev
-        })
-    }, [dataset])
- 
-    useEffect(() => {
         let sum = 0
         rows.forEach(row => {
-            sum += parseFloat(row.qp) * parseFloat(row.ssef);
+            sum += parseFloat(row.scope1) + parseFloat(row.scope2);
         })
         onChange(sum)
         console.log(sum);
-    }, [rows])
+    }, [rows])    
+
+    // useEffect(() => {
+    //     rows.forEach(row => {
+    //         console.log('-------------:::::::::', row.Franchises)
+    //         console.log('Dataset2:::::', dataset2, dataset2.length)
+    //         dataset2.map(column => {
+    //             if (column.includes(row.Franchises)) 
+    //                     row.scope1 = column[0]
+    //                     row.scope2 = column[1]
+                    
+    //         })
+    //         const scope1 = dataset2[row.Franchises] ? dataset2[row.Franchises][0] : 0
+    //         const scope2 = dataset2[row.Franchises] ? dataset2[row.Franchises][1] : 0
+    //         if (scope1) setRows(scope1)
+    //         if (scope2) setRows(scope2)
+    //     })
+    // }, [rows])
+
+    
 
     return (
-        <div>
+        // <div className='SignupPage' onClick={() => setfake1(true)}>
+        <div className='container'>
             <span className='title'>Input Data</span>
             <div className='table-container'>
                 <table>
                     <tbody>
                         <tr>
-                            <th>Purchased good</th>
-                            <th>Supplier</th>
-                            <th>Quantities purchased(kg)</th>
-                            <th>Surpplier-specific emission factor(kgco2/kg)</th>
+                            <th>Franchisee</th>
+                            <th> Scope 1 emissions (kg CO2e)</th>
+                            <th>Scope 2 emissions (kg CO2e)</th>
                         </tr>
-
                         {rows.map((row) =>
                             <tr>
-                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                <td><input type='text' value={row.Franchises} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
                                         return prev.map(i => {
                                             if (i.id === row.id) {
-                                                i.gool = e.target.value
+                                                i.Franchises = e.target.value
                                             }
                                             return i;
                                         })
                                     })
                                 }} /></td>
-                                <td><input type='text' value={row.supplier} className='Input_form' onChange={(e) => {
+                                <td><input type='text' value={row.scope1} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
                                         return prev.map(i => {
                                             if (i.id === row.id) {
-                                                i.supplier = e.target.value
-                                            }
-                                            return i;
-                                        })
-                                    })
-
-                                }} /></td>
-                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
-                                    setRows(prev => {
-                                        return prev.map(i => {
-                                            if (i.id === row.id) {
-                                                i.qp = e.target.value
+                                                i.scope1 = e.target.value
                                             }
                                             return i;
                                         })
@@ -110,11 +118,11 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
 
                                 }} /></td>
                                 <td className='AddStyle'>
-                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                    <input type='text' value={row.scope2} className='Input_form' onChange={(e) => {
                                         setRows(prev => {
                                             return prev.map(i => {
                                                 if (i.id === row.id) {
-                                                    i.ssef = e.target.value
+                                                    i.scope2 = e.target.value
                                                 }
                                                 return i;
                                             })
@@ -124,10 +132,9 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
                                         setRows(prev => {
                                             const newRow = {
                                                 id: Date.now(),
-                                                gool: '',
-                                                supplier: '',
-                                                qp: '',
-                                                ssef: ''
+                                                Franchises: '',
+                                                scope1: '',
+                                                scope2: ''
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
 
@@ -143,7 +150,7 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
                                     }} />
                                 </td>
                             </tr>
-                        )}                        
+                        )}
                     </tbody>
                 </table>
             </div>
@@ -151,4 +158,4 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
     )
 }
 
-export default PurchasedSupplierTest
+export default FranchisesSpecificTest

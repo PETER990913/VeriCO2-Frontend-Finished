@@ -36,7 +36,7 @@ import CapitalGoodHybrid from './inputTable/2_2';
 import CapitalGoodProduct from './inputTable/2_3';
 import CapitalGoodSpend from './inputTable/2_4';
 import DownstreamTransportation from './inputTable/8_1';
-import PurchasedSupplierTest from './inputTable/1_1test';
+import FranchisesSpecificTest from './inputTable/13_1test';
 
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const fileRef = useRef()
@@ -138,7 +138,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     }, [SERVER_URL, navigate])
     const displaycase = () => {
         // if (category === 0 & method === 0) return <PurchasedSupplier dataset={dataset} dataset1={dataset1} onChange={(data) => { setResult1_1(data) }} />
-        if (category === 0 & method === 0) return <PurchasedSupplierTest dataset={dataset} dataset1={dataset1} onChange={(data) => { setResult1_1(data) }} />
+        if (category === 0 & method === 0) return <PurchasedSupplier dataset={dataset} dataset1={dataset1} onChange={(data) => { setResult1_1(data) }} />
         if (category === 0 & method === 1) return <PurchasedHybrid dataset1={dataset1} onChange={(data) => { setResult1_2(data) }} />
         if (category === 0 & method === 2) return <PurchasedAverage dataset1={dataset1} onChange={(data) => { setResult1_3(data) }} />
         if (category === 0 & method === 3) return <PurchasedSpend dataset1={dataset1} onChange={(data) => { setResult1_4(data) }} />
@@ -162,7 +162,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 10 & method === 1) return <UseIndirect onChange={(data) => { setResult10_2(data) }} />
         if (category === 11 & method === 0) return <EndWaste onChange={(data) => { setResult11_1(data) }} />
         if (category === 12 & method === 0) return <Downstream onChange={(data) => { setResult12_1(data) }} />
-        if (category === 13 & method === 0) return <FranchisesSpecific dataset2={dataset2} dataset={dataset} onChange={(data) => { setResult13_1(data) }} />
+        if (category === 13 & method === 0) return <FranchisesSpecificTest dataset2={dataset2} dataset={dataset} onChange={(data) => { setResult13_1(data) }} />
         if (category === 13 & method === 1) return <FranchisesAverage onChange={(data) => { setResult13_2(data) }} />
         if (category === 14 & method === 0) return <InvestmentSpecific dataset2={dataset2} onChange={(data) => { setResult14_1(data) }} />
         if (category === 14 & method === 1) return <InvestmentAverage onChange={(data) => { setResult14_2(data) }} />
@@ -662,7 +662,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         <div className='CalculationPage' onClick={() => setSideBarFlag(false)}>
             <Header sideBarFlag={sideBarFlag} setSideBarFlag={setSideBarFlag} />
             <div className='cluster'>
-                <span className='title'>Scope 3 Emission Performance (t of CO₂)</span>
+                <span className='title'>Scope 3 Emission Performance (tonnes of CO2)</span>
                 <div className='main'>
                     <div className='box'>
                         <span className='title'>15 Categories</span>

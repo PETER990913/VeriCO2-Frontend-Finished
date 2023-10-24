@@ -1,55 +1,56 @@
 import React, { useState, useEffect } from 'react'
 import '../../App.scss'
+import Add from '../../assets/images/Add.png'
+import Delete from '../../assets/images/Delete.png'
 function InvestmentSpecific({ onChange, dataset2 }) {
-    const [v0, setV0] = useState(120000);
-    const [v1, setV1] = useState(40);
-    const [v2, setV2] = useState(200000);
-    const [v3, setV3] = useState(15);
-    const [v4, setV4] = useState(1600000);
-    const [v5, setV5] = useState(25);
-    const [v6, setV6] = useState(60000);
-    const [v7, setV7] = useState(25);
-    const [v10, setV10] = useState('1');
-    const [v11, setV11] = useState('2');
-    const [v12, setV12] = useState('3');
-    const [v13, setV13] = useState('4');
-    const [textv0, setTextV0] = useState('Equity Investment in subsidiary');
-    const [textv1, setTextV1] = useState('Equity Investment in subsidiary');
-    const [textv2, setTextV2] = useState('Equity investment in joint venture');
-    const [textv3, setTextV3] = useState('Equity investment in joint venture');
-    const handleOnChange = (e) => {
-        console.log('handle change->', e.target.value);
-        const keyVal = e.target.value
-        setV10(e.target.value)
-        const v0 = dataset2[keyVal] ? dataset2[keyVal][2] : 0
-        if (v0) setV0(v0)
-    }
-    const handleOnChange1 = (e) => {
-        console.log('handle change->', e.target.value);
-        const keyVal = e.target.value
-        setV11(e.target.value)
-        const v2 = dataset2[keyVal] ? dataset2[keyVal][2] : 0
-        if (v2) setV2(v2)
-    }
-    const handleOnChange2 = (e) => {
-        console.log('handle change->', e.target.value);
-        const keyVal = e.target.value
-        setV12(e.target.value)
-        const v4 = dataset2[keyVal] ? dataset2[keyVal][2] : 0
-        if (v4) setV4(v4)
-    }
-    const handleOnChange3 = (e) => {
-        console.log('handle change->', e.target.value);
-        const keyVal = e.target.value
-        setV13(e.target.value)
-        const v6 = dataset2[keyVal] ? dataset2[keyVal][2] : 0
-        if (v6) setV6(v6)
-    }
-    useEffect(() => {
-        onChange((Number(v0) * Number(v1) + Number(v2) * Number(v3) + Number(v4) * Number(v5) + Number(v6) * Number(v7)) / 100)
-    }, [
-        v0, v1, v2, v3, v4, v5, v6, v7
+    const [rows, setRows] = useState([
+        {
+            id: 0,
+            Investment: '1',
+            Type: 'Equity Investment in subsidiary',
+            scope12: '120000',
+            share: '40'
+        },
+        {
+            id: 1,
+            Investment: '2',
+            Type: 'Equity Investment in subsidiary',
+            scope12: '200000',
+            share: '15'
+        },
+        {
+            id: 2,
+            Investment: '3',
+            Type: 'Equity investment in joint venture',
+            scope12: '1600000',
+            share: '25'
+        },
+        {
+            id: 3,
+            Investment: '4',
+            Type: 'Equity investment in joint venture',
+            scope12: '60000',
+            share: '25'
+        },
     ])
+    
+    useEffect(() => {
+        let sum = 0
+        rows.forEach(row => {
+            sum += parseFloat(row.scope12) * parseFloat(row.share) / 100;
+        })
+        onChange(sum)
+        console.log(sum);
+    }, [rows])
+
+    // const handleOnChange3 = (e) => {
+    //     console.log('handle change->', e.target.value);
+    //     const keyVal = e.target.value
+    //     setV13(e.target.value)
+    //     const v6 = dataset2[keyVal] ? dataset2[keyVal][2] : 0
+    //     if (v6) setV6(v6)
+    // }
+    
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
@@ -63,30 +64,74 @@ function InvestmentSpecific({ onChange, dataset2 }) {
                             <th>Scope 1 and scope 2 emissions of investee company in reporting year (tonnes CO2e)</th>
                             <th>Reporting company’s share of equity (percent)</th>
                         </tr>
-                        <tr>
-                            <td><input type='text' value={v10} className='Input_form' onChange={handleOnChange} /></td>
-                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
-                            <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
-                            <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={v11} className='Input_form' onChange={handleOnChange1} /></td>
-                            <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
-                            <td><input type='text' value={v2} className='Input_form' onChange={(e) => { setV2(e.target.value) }} /></td>
-                            <td><input type='text' value={v3} className='Input_form' onChange={(e) => { setV3(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={v12} className='Input_form' onChange={handleOnChange2} /></td>
-                            <td><input type='text' value={textv2} className='Input_form' onChange={(e) => { setTextV2(e.target.value) }} /></td>
-                            <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
-                            <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
-                        </tr>
-                        <tr>
-                            <td><input type='text' value={v13} className='Input_form' onChange={handleOnChange3} /></td>
-                            <td><input type='text' value={textv3} className='Input_form' onChange={(e) => { setTextV3(e.target.value) }} /></td>
-                            <td><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
-                            <td><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
-                        </tr>
+                        {rows.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.Investment} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.Investment = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.Type} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.Type = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td><input type='text' value={row.scope12} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.scope12 = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.share} className='Input_form' onChange={(e) => {
+                                        setRows(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.share = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                Investment: '',
+                                                Type: '',
+                                                scope12: '',
+                                                share: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}     
                     </tbody>
                 </table>
             </div>
