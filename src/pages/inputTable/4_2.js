@@ -1,37 +1,63 @@
 import React, { useState, useEffect } from 'react'
 import '../../App.scss'
+import Add from '../../assets/images/Add.png'
+import Delete from '../../assets/images/Delete.png'
 function WasteAverage({ onChange, dataset1 }) {
-    const [v0, setV0] = useState(40);
-    const [v1, setV1] = useState(25);
-    const [v2, setV2] = useState(30);
-    const [v3, setV3] = useState(5);
-    const [v4, setV4] = useState(0);
-    const [v5, setV5] = useState(30);
-    const [v6, setV6] = useState(0);
-    const [v7, setV7] = useState(20);
-    const [v8, setV8] = useState(10);
-    const [v9, setV9] = useState(20);
-    const [v10, setV10] = useState(30);
-    const [textv0, setTextV0] = useState('Landfill');
-    const [textv1, setTextV1] = useState('Incinerated with energy recovery');
-    const [textv2, setTextV2] = useState('Recycled');
-    const [textv3, setTextV3] = useState('Recycled');
-    const [textv4, setTextV4] = useState('Composted');
-
-    useEffect(() => {
-        if (dataset1.Composted_Average_emission_factor) {
-            setV2(dataset1.Landfill_Average_emission_factor)
-            setV4(dataset1.Incinerated_with_energy_recovery_Average_emission_factor)
-            setV6(dataset1.Recycled_Average_emission_factor)
-            setV8(dataset1.Composted_Average_emission_factor)
+    const [rows, setRows] = useState([
+        {
+            id: 0,
+            total: '40',
+            gool: 'Landfill',
+            qp: '25',
+            ssef: '300'
+        },
+        {
+            id: 1,
+            total: '40',
+            gool: 'Incinerated',
+            qp: '5',
+            ssef: '0'
+        },
+        {
+            id: 2,
+            total: '40',
+            gool: 'Recycled',
+            qp: '30',
+            ssef: '0'
+        },
+        {
+            id: 3,
+            total: '40',
+            gool: 'Recycled',
+            qp: '20',
+            ssef: '10'
+        },
+        {
+            id:4,
+            total: '40',
+            gool: 'Composted',
+            qp: '20',
+            ssef: '30'
         }
-    }, [dataset1])
+    ])
 
     useEffect(() => {
-        onChange((Number(v0) * Number(v1) * Number(v2) + Number(v0) * Number(v3) * Number(v4) + Number(v0) * Number(v5) * Number(v6) + Number(v0) * Number(v7) * Number(v8) + Number(v0) * Number(v9) * Number(v10)) * 10)
-    }, [
-        v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10
-    ])
+        let sum = 0
+        rows.forEach(row => {
+            sum += parseFloat(row.total) * parseFloat(row.qp) * parseFloat(row.ssef)/100;
+        })
+        onChange(sum)
+        console.log(sum);
+    }, [rows])
+    // useEffect(() => {
+    //     if (dataset1.Composted_Average_emission_factor) {
+    //         setV2(dataset1.Landfill_Average_emission_factor)
+    //         setV4(dataset1.Incinerated_with_energy_recovery_Average_emission_factor)
+    //         setV6(dataset1.Recycled_Average_emission_factor)
+    //         setV8(dataset1.Composted_Average_emission_factor)
+    //     }
+    // }, [dataset1])
+
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
@@ -45,7 +71,76 @@ function WasteAverage({ onChange, dataset1 }) {
                             <th> Proportion (percent)</th>
                             <th>Average emission factor  of waste treatment method  (kg CO2e/tonne)</th>
                         </tr>
-                        <tr>
+                        {rows.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.total} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.total = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.gool = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.qp = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                        setRows(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.ssef = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                total: '',
+                                                gool: '',
+                                                qp: '',
+                                                ssef: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}
+                        {/* <tr>
                             <td rowSpan={5}><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
                             <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
                             <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
@@ -70,7 +165,7 @@ function WasteAverage({ onChange, dataset1 }) {
                             <td><input type='text' value={textv4} className='Input_form' onChange={(e) => { setTextV4(e.target.value) }} /></td>
                             <td><input type='text' value={v9} className='Input_form' onChange={(e) => { setV9(e.target.value) }} /></td>
                             <td><input type='text' value={v10} className='Input_form' onChange={(e) => { setV10(e.target.value) }} /></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>

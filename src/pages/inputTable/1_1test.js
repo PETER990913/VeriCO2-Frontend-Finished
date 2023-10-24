@@ -119,7 +119,6 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
                                                 return i;
                                             })
                                         })
-
                                     }} />
                                     <img src={Add} alt='Add' className='AddButton' onClick={() => {
                                         setRows(prev => {
