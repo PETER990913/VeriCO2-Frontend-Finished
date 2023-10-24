@@ -170,7 +170,6 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                             const newRow = {
                                                 id: Date.now(),
                                                 gool: '',
-                                                supplier: '',
                                                 qp: '',
                                                 ssef: ''
                                             }
@@ -194,22 +193,22 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <th>Mass purchased (kg)</th>
                             <th>Emission factor (kg CO2e/kg)</th>
                         </tr>
-                        {rows1.map((row) =>
+                        {rows1.map((row1) =>
                             <tr>
-                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                <td><input type='text' value={row1.gool} className='Input_form' onChange={(e) => {
                                     setRows1(prev => {
                                         return prev.map(i => {
-                                            if (i.id === row.id) {
+                                            if (i.id === row1.id) {
                                                 i.gool = e.target.value
                                             }
                                             return i;
                                         })
                                     })
                                 }} /></td>
-                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                <td><input type='text' value={row1.qp} className='Input_form' onChange={(e) => {
                                     setRows1(prev => {
                                         return prev.map(i => {
-                                            if (i.id === row.id) {
+                                            if (i.id === row1.id) {
                                                 i.qp = e.target.value
                                             }
                                             return i;
@@ -218,10 +217,10 @@ function PurchasedHybrid({ onChange, dataset1 }) {
 
                                 }} /></td>
                                 <td className='AddStyle'>
-                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                    <input type='text' value={row1.ssef} className='Input_form' onChange={(e) => {
                                         setRows1(prev => {
                                             return prev.map(i => {
-                                                if (i.id === row.id) {
+                                                if (i.id === row1.id) {
                                                     i.ssef = e.target.value
                                                 }
                                                 return i;
@@ -237,7 +236,7 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                                 qp: '',
                                                 ssef: ''
                                             }
-                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+                                            let pos = prev.indexOf(prev.find(item => item.id === row1.id)) + 1
 
                                             return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
                                         })
@@ -245,7 +244,7 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows1(prev => {
-                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            let pos = prev.indexOf(prev.find(item => item.id == row1.id))
                                             return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
                                         })
                                     }} />
@@ -258,22 +257,22 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <th>Vehicle type emission factor (kg CO2e/kg/km)</th>
                         </tr>
 
-                        {rows2.map((row) =>
+                        {rows2.map((row2) =>
                             <tr>
-                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                <td><input type='text' value={row2.gool} className='Input_form' onChange={(e) => {
                                     setRows2(prev => {
                                         return prev.map(i => {
-                                            if (i.id === row.id) {
+                                            if (i.id === row2.id) {
                                                 i.gool = e.target.value
                                             }
                                             return i;
                                         })
                                     })
                                 }} /></td>
-                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                <td><input type='text' value={row2.qp} className='Input_form' onChange={(e) => {
                                     setRows2(prev => {
                                         return prev.map(i => {
-                                            if (i.id === row.id) {
+                                            if (i.id === row2.id) {
                                                 i.qp = e.target.value
                                             }
                                             return i;
@@ -282,10 +281,10 @@ function PurchasedHybrid({ onChange, dataset1 }) {
 
                                 }} /></td>
                                 <td className='AddStyle'>
-                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                    <input type='text' value={row2.ssef} className='Input_form' onChange={(e) => {
                                         setRows2(prev => {
                                             return prev.map(i => {
-                                                if (i.id === row.id) {
+                                                if (i.id === row2.id) {
                                                     i.ssef = e.target.value
                                                 }
                                                 return i;
@@ -298,11 +297,10 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                             const newRow = {
                                                 id: Date.now(),
                                                 gool: '',
-                                                supplier: '',
                                                 qp: '',
                                                 ssef: ''
                                             }
-                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+                                            let pos = prev.indexOf(prev.find(item => item.id === row2.id)) + 1
 
                                             return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
                                         })
@@ -310,7 +308,7 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows2(prev => {
-                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            let pos = prev.indexOf(prev.find(item => item.id == row2.id))
                                             return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
                                         })
                                     }} />
@@ -322,22 +320,22 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <th>Amount (kg)</th>
                             <th>Emission factor (kg CO2e/kg of waste sent to landfill)</th>
                         </tr>
-                        {rows3.map((row) =>
+                        {rows3.map((row3) =>
                             <tr>
-                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                <td><input type='text' value={row3.gool} className='Input_form' onChange={(e) => {
                                     setRows3(prev => {
                                         return prev.map(i => {
-                                            if (i.id === row.id) {
+                                            if (i.id === row3.id) {
                                                 i.gool = e.target.value
                                             }
                                             return i;
                                         })
                                     })
                                 }} /></td>
-                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                <td><input type='text' value={row3.qp} className='Input_form' onChange={(e) => {
                                     setRows3(prev => {
                                         return prev.map(i => {
-                                            if (i.id === row.id) {
+                                            if (i.id === row3.id) {
                                                 i.qp = e.target.value
                                             }
                                             return i;
@@ -346,10 +344,10 @@ function PurchasedHybrid({ onChange, dataset1 }) {
 
                                 }} /></td>
                                 <td className='AddStyle'>
-                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                    <input type='text' value={row3.ssef} className='Input_form' onChange={(e) => {
                                         setRows3(prev => {
                                             return prev.map(i => {
-                                                if (i.id === row.id) {
+                                                if (i.id === row3.id) {
                                                     i.ssef = e.target.value
                                                 }
                                                 return i;
@@ -365,7 +363,7 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                                 qp: '',
                                                 ssef: ''
                                             }
-                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+                                            let pos = prev.indexOf(prev.find(item => item.id === row3.id)) + 1
 
                                             return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
                                         })
@@ -373,7 +371,7 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows3(prev => {
-                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            let pos = prev.indexOf(prev.find(item => item.id == row3.id))
                                             return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
                                         })
                                     }} />

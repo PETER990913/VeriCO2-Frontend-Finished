@@ -1,23 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import '../../App.scss'
+import Add from '../../assets/images/Add.png'
+import Delete from '../../assets/images/Delete.png'
 function UpstreamSpend({ onChange }) {
-    const [v0, setV0] = useState(200000);
-    const [v1, setV1] = useState(0.04);
-    const [v2, setV2] = useState(300000);
-    const [v3, setV3] = useState(0.15);
-    const [v4, setV4] = useState(400000);
-    const [v5, setV5] = useState(0.05);
-    const [textv0, setTextV0] = useState('B');
-    const [textv1, setTextV1] = useState('Truck (rigid, 3.5-7.5t)');
-    const [textv2, setTextV2] = useState('C');
-    const [textv3, setTextV3] = useState('Air (long haul)');
-    const [textv4, setTextV4] = useState('D');
-    const [textv5, setTextV5] = useState('Container 2,000–2,999 TEU');
-    useEffect(() => {
-        onChange(Number(v0) * Number(v1) + Number(v2) * Number(v3) + Number(v4) * Number(v5))
-    }, [
-        v0, v1, v2, v3, v4, v5
+    const [rows, setRows] = useState([
+        {
+            id: 0,
+            gool: 'B',
+            qp: '200000',
+            supplier: 'Truck (rigid, 3.5-7.5t)',
+            ssef: '0.04'
+        },
+        {
+            id: 1,
+            gool: 'C',
+            qp: '300000',
+            supplier: 'Air (long haul)',
+            ssef: '0.15'
+        },
+        {
+            id: 2,
+            gool: 'D',
+            qp: '400000',
+            supplier: 'Container 2,000–2,999 TEU',
+            ssef: '0.05'
+        },
     ])
+
+    useEffect(() => {
+        let sum = 0
+        rows.forEach(row => {
+            sum += parseFloat(row.qp) * parseFloat(row.ssef);
+        })
+        onChange(sum)
+        console.log(sum);
+    }, [rows])
+    
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
@@ -31,7 +49,77 @@ function UpstreamSpend({ onChange }) {
                             <th>Transport mode or vehicle type </th>
                             <th>EEIO emission factor (kg CO2e/$)</th>
                         </tr>
-                        <tr>
+                        {rows.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.gool = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.qp = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td><input type='text' value={row.supplier} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.supplier = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                        setRows(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.ssef = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                gool: '',
+                                                supplier: '',
+                                                qp: '',
+                                                ssef: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}
+                        {/* <tr>
                             <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
                             <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
                             <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
@@ -48,7 +136,7 @@ function UpstreamSpend({ onChange }) {
                             <td><input type='text' value={v4} className='Input_form' onChange={(e) => { setV4(e.target.value) }} /></td>
                             <td><input type='text' value={textv5} className='Input_form' onChange={(e) => { setTextV5(e.target.value) }} /></td>
                             <td><input type='text' value={v5} className='Input_form' onChange={(e) => { setV5(e.target.value) }} /></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>

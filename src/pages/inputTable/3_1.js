@@ -1,27 +1,48 @@
 import React, { useState, useEffect } from 'react'
 import '../../App.scss'
+import Add from '../../assets/images/Add.png'
+import Delete from '../../assets/images/Delete.png'
 function UpstreamFuel({ onChange }) {
-    const [v0, setV0] = useState(5000);
-    const [v1, setV1] = useState(3);
-    const [v2, setV2] = useState(8000);
-    const [v3, setV3] = useState(3);
-    const [v4, setV4] = useState(9000);
-    const [v5, setV5] = useState(3);
-    const [v6, setV6] = useState(50);
-    const [v7, setV7] = useState(2000);
-    const [textv0, setTextV0] = useState('B');
-    const [textv1, setTextV1] = useState('Diesel');
-    const [textv2, setTextV2] = useState('C');
-    const [textv3, setTextV3] = useState('Diesel');
-    const [textv4, setTextV4] = useState('D');
-    const [textv5, setTextV5] = useState('Diesel');
-    const [textv6, setTextV6] = useState('D');
-    const [textv7, setTextV7] = useState('Refrigerant R410a');
-    useEffect(() => {
-        onChange(Number(v0) * Number(v1) + Number(v2) * Number(v3) + Number(v4) * Number(v5) + Number(v6) * Number(v7))
-    }, [
-        v0, v1, v2, v3, v4, v5, v6, v7
+    const [rows, setRows] = useState([
+        {
+            id: 0,
+            gool: 'B',
+            qp: '5000',
+            supplier: 'Diesel',
+            ssef: '3'
+        },
+        {
+            id: 1,
+            gool: 'C',
+            qp: '8000',
+            supplier: 'Diesel',
+            ssef: '3'
+        },
+        {
+            id: 2,
+            gool: 'D',
+            qp: '9000',
+            supplier: 'Diesel',
+            ssef: '3'
+        },
+        {
+            id: 3,
+            gool: 'D',
+            qp: '50',
+            supplier: 'Refrigerant R410a',
+            ssef: '2000'
+        },
     ])
+
+    useEffect(() => {
+        let sum = 0
+        rows.forEach(row => {
+            sum += parseFloat(row.qp) * parseFloat(row.ssef);
+        })
+        onChange(sum)
+        console.log(sum);
+    }, [rows])
+
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
@@ -35,7 +56,77 @@ function UpstreamFuel({ onChange }) {
                             <th>Fuel/refrigerant type</th>
                             <th>Emission factor (kg CO2e/ liter for fuels)</th>
                         </tr>
-                        <tr>
+                        {rows.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.gool = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.qp = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td><input type='text' value={row.supplier} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.supplier = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
+                                        setRows(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.ssef = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                gool: '',
+                                                supplier: '',
+                                                qp: '',
+                                                ssef: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}
+                        {/* <tr>
                             <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
                             <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
                             <td><input type='text' value={textv1} className='Input_form' onChange={(e) => { setTextV1(e.target.value) }} /></td>
@@ -58,7 +149,7 @@ function UpstreamFuel({ onChange }) {
                             <td><input type='text' value={v6} className='Input_form' onChange={(e) => { setV6(e.target.value) }} /></td>
                             <td><input type='text' value={textv7} className='Input_form' onChange={(e) => { setTextV7(e.target.value) }} /></td>
                             <td><input type='text' value={v7} className='Input_form' onChange={(e) => { setV7(e.target.value) }} /></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>
