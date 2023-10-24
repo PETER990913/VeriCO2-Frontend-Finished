@@ -53,6 +53,9 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
             })
     }, [dataset])
 
+    // useEffect(() => {
+    //     rows = sessionStorage.getItem('saveData')
+    // }, [rows])
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {
