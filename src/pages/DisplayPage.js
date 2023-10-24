@@ -200,7 +200,7 @@ function DisplayPage() {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'tCO2-e', // Set your y-axis label here
+                    text: 'tCO2-e', 
                     font: {
                         size: 14,
                         weight: 'bold',
@@ -325,8 +325,6 @@ function DisplayPage() {
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <Footer />
         </div>

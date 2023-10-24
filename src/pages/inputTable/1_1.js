@@ -44,15 +44,15 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
     useEffect(() => {
         console.log('Dataset:::', dataset[0])
         if (dataset?.length > 0)
-        setRows(prev => {
+            setRows(prev => {
                 dataset[0].forEach((d, idx) => {
                     prev[idx].qp = d[0]
                     prev[idx].ssef = d[1]
                 })
-            return prev
-        })
+                return prev
+            })
     }, [dataset])
- 
+
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {
@@ -143,7 +143,7 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
                                     }} />
                                 </td>
                             </tr>
-                        )}                        
+                        )}
                     </tbody>
                 </table>
             </div>

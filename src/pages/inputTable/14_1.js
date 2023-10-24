@@ -34,6 +34,20 @@ function InvestmentSpecific({ onChange, dataset2 }) {
         },
     ])
     
+    const handleOnchange = (name, index) => {
+        console.log('changed name', name)
+        const value = dataset2[name]
+        if (value) {
+            const newDatas = [...rows]
+            newDatas[index] = {
+                ...newDatas[index],
+                scope12: value[2],
+
+            }
+            setRows(newDatas)
+        }
+    }
+
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {
@@ -75,6 +89,7 @@ function InvestmentSpecific({ onChange, dataset2 }) {
                                             return i;
                                         })
                                     })
+                                    handleOnchange(e.target.value, row.id);
                                 }} /></td>
                                 <td><input type='text' value={row.Type} className='Input_form' onChange={(e) => {
                                     setRows(prev => {

@@ -54,6 +54,21 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
         },
     ])
 
+    const handleOnchange = (name, index) => {
+        console.log('changed name', name)
+        const value = dataset2[name]
+        if (value) {
+            const newDatas = [...rows]
+            newDatas[index] = {
+                ...newDatas[index],
+                scope1: value[0],
+                scope2: value[1],
+
+            }
+            setRows(newDatas)
+        }
+    }
+
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {
@@ -61,27 +76,8 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
         })
         onChange(sum)
         console.log(sum);
-    }, [rows])    
-
-    // useEffect(() => {
-    //     rows.forEach(row => {
-    //         console.log('-------------:::::::::', row.Franchises)
-    //         console.log('Dataset2:::::', dataset2, dataset2.length)
-    //         dataset2.map(column => {
-    //             if (column.includes(row.Franchises)) 
-    //                     row.scope1 = column[0]
-    //                     row.scope2 = column[1]
-                    
-    //         })
-    //         const scope1 = dataset2[row.Franchises] ? dataset2[row.Franchises][0] : 0
-    //         const scope2 = dataset2[row.Franchises] ? dataset2[row.Franchises][1] : 0
-    //         if (scope1) setRows(scope1)
-    //         if (scope2) setRows(scope2)
-    //     })
-    // }, [rows])
-
+    }, [rows])
     
-
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
@@ -105,6 +101,7 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
                                             return i;
                                         })
                                     })
+                                    handleOnchange(e.target.value, row.id);
                                 }} /></td>
                                 <td><input type='text' value={row.scope1} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
