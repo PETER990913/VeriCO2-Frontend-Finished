@@ -35,6 +35,9 @@ function MainPage({ sideBarFlag, setSideBarFlag }) {
             if (!token) {
               navigate('/signup')
             }
+            else {
+              navigate('/calculation')
+            }
           }}>
             Get Started</div>
           {/* {!token && (<div className='button' onClick={() => navigate('/signup')}>Get Started</div>)} */}
