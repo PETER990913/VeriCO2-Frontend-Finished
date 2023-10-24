@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import '../../App.scss'
+import Add from '../../assets/images/Add.png'
+import Delete from '../../assets/images/Delete.png'
 function ProcessingAverage({ onChange }) {
-    const [v0, setV0] = useState(100000);
-    const [v1, setV1] = useState(1.5);
-    const [textv0, setTextV0] = useState('Candy mixing, cooking, molding, cooling, wrapping, and packaging');
-    useEffect(() => {
-        onChange(Number(v0) * Number(v1))
-    }, [
-        v0, v1
+    const [rows, setRows] = useState([
+        {
+            id: 0,
+            Process: 'Candy mixing, cooking, molding, cooling, wrapping, and packaging',
+            mass: '100000',
+            factor: '1.5',
+        },
     ])
+
+    useEffect(() => {
+        let sum = 0        
+        rows.forEach(row => {
+            sum += parseFloat(row.mass) * parseFloat(row.factor);
+        })        
+        onChange(sum)
+    }, [rows])
+
+    
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
@@ -21,11 +33,63 @@ function ProcessingAverage({ onChange }) {
                             <th>Mass of sold intermediate product (kg)</th>
                             <th>Emission factor of processing stages (kg CO2e/kg)</th>
                         </tr>
-                        <tr>
-                            <td><input type='text' value={textv0} className='Input_form' onChange={(e) => { setTextV0(e.target.value) }} /></td>
-                            <td><input type='text' value={v0} className='Input_form' onChange={(e) => { setV0(e.target.value) }} /></td>
-                            <td><input type='text' value={v1} className='Input_form' onChange={(e) => { setV1(e.target.value) }} /></td>
-                        </tr>
+                        {rows.map((row) =>
+                            <tr>
+                                <td><input type='text' value={row.Process} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.Process = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+                                }} /></td>
+                                <td><input type='text' value={row.mass} className='Input_form' onChange={(e) => {
+                                    setRows(prev => {
+                                        return prev.map(i => {
+                                            if (i.id === row.id) {
+                                                i.mass = e.target.value
+                                            }
+                                            return i;
+                                        })
+                                    })
+
+                                }} /></td>
+                                <td className='AddStyle'>
+                                    <input type='text' value={row.factor} className='Input_form' onChange={(e) => {
+                                        setRows(prev => {
+                                            return prev.map(i => {
+                                                if (i.id === row.id) {
+                                                    i.factor = e.target.value
+                                                }
+                                                return i;
+                                            })
+                                        })
+                                    }} />
+                                    <img src={Add} alt='Add' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            const newRow = {
+                                                id: Date.now(),
+                                                process: '',
+                                                mass: '',
+                                                factor: ''
+                                            }
+                                            let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
+
+                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                        })
+                                    }
+                                    } />
+                                    <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
+                                        setRows(prev => {
+                                            let pos = prev.indexOf(prev.find(item => item.id == row.id))
+                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                        })
+                                    }} />
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
