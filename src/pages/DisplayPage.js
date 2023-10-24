@@ -210,9 +210,9 @@ function DisplayPage() {
         }
     };
     return (
-        <div className='DisplayPage' ref={pdfRef}>
+        <div className='DisplayPage'>
             <Header />
-            <div className='container'>
+            <div className='container' ref={pdfRef}>
                 <div className='cards'>
                     <div className='card'>
                         <div className='items'>
@@ -257,7 +257,7 @@ function DisplayPage() {
                                     </tr>
                                     <tr>
                                         <td>Fuel- and Energy-Related Activities Not Included in Scope 1 or Scope 2</td>
-                                        <td>transmission and distribution losses method</td>
+                                        <td>Transmission and distribution losses method</td>
                                         <td>{Chart1_15.toFixed(2)}</td>
                                     </tr>
                                     <tr>
@@ -287,7 +287,7 @@ function DisplayPage() {
                                     </tr>
                                     <tr>
                                         <td>Downstream Transportation and Distribution</td>
-                                        <td>downstream method</td>
+                                        <td>Downstream method</td>
                                         <td>{Chart8_1.toFixed(2)}</td>
                                     </tr>
                                     <tr>
