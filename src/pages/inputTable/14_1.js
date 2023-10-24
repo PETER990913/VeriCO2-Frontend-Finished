@@ -41,6 +41,7 @@ function InvestmentSpecific({ onChange, dataset2 }) {
             const newDatas = [...rows]
             newDatas[index] = {
                 ...newDatas[index],
+                Investment: name,
                 scope12: value[2],
 
             }

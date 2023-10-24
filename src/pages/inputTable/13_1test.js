@@ -61,6 +61,7 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
             const newDatas = [...rows]
             newDatas[index] = {
                 ...newDatas[index],
+                Franchises: name,
                 scope1: value[0],
                 scope2: value[1],
 
@@ -77,7 +78,7 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
         onChange(sum)
         console.log(sum);
     }, [rows])
-    
+
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>

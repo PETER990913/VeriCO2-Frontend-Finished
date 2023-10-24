@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
-function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
+function PurchasedSupplier({ onChange, dataset, dataset1 }) {
     const [rows, setRows] = useState([
         {
             id: 0,
@@ -151,4 +151,4 @@ function PurchasedSupplierTest({ onChange, dataset, dataset1 }) {
     )
 }
 
-export default PurchasedSupplierTest
+export default PurchasedSupplier
