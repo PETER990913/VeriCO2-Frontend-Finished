@@ -67,10 +67,10 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
 
 
 
-    const handleFileParseScope = () => {
-        axios.get('http://localhost:4000/load-scope')
-            .then(res => setDataset2(res.data));
-    }
+    // const handleFileParseScope = () => {
+    //     axios.get('http://localhost:4000/load-scope')
+    //         .then(res => setDataset2(res.data));
+    // }
 
     useEffect(() => {
         axios.get('http://localhost:4000/load-scope')
