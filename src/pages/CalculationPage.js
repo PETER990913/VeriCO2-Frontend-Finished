@@ -701,9 +701,9 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
 
                             {displaycase()}
 
-                            <div className='button' onClick={onClick}>Upload Data</div>
-                            <input type="file" style={{ display: 'none' }} ref={fileRef} onChange={handleFileParse} />
-                            <div className='button' onClick={handleFileParseCSV}>Import Emission Factor</div>
+                            {/* <div className='button' onClick={onClick}>Upload Data</div> */}
+                            {/* <input type="file" style={{ display: 'none' }} ref={fileRef} onChange={handleFileParse} /> */}
+                            {/* <div className='button' onClick={handleFileParseCSV}>Import Emission Factor</div> */}
                             {/* <div className='button' onClick={handleFileParseScope}>Import Scope1 & 2</div> */}
                             {/* <div className='button'>Import Scope1 & 2</div> */}
                         </div>
