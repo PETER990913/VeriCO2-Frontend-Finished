@@ -65,10 +65,17 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
             .then(res => setDataset1(res.data));
     }
 
+
+
     const handleFileParseScope = () => {
         axios.get('http://localhost:4000/load-scope')
             .then(res => setDataset2(res.data));
     }
+
+    useEffect(() => {
+        axios.get('http://localhost:4000/load-scope')
+            .then(res => setDataset2(res.data));
+    }, [])
     // console.log("dataset1", dataset1)
     console.log("dataset2", dataset2)
     const navigate = useNavigate();
@@ -697,7 +704,8 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                             <div className='button' onClick={onClick}>Upload Data</div>
                             <input type="file" style={{ display: 'none' }} ref={fileRef} onChange={handleFileParse} />
                             <div className='button' onClick={handleFileParseCSV}>Import Emission Factor</div>
-                            <div className='button' onClick={handleFileParseScope}>Import Scope1 & 2</div>
+                            {/* <div className='button' onClick={handleFileParseScope}>Import Scope1 & 2</div> */}
+                            {/* <div className='button'>Import Scope1 & 2</div> */}
                         </div>
                     </div>
                     <div className='box'>

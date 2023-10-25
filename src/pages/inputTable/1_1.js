@@ -40,7 +40,8 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
             ssef: '0.2'
         },
     ])
-
+    
+    
     useEffect(() => {
         console.log('Dataset:::', dataset[0])
         if (dataset?.length > 0)
@@ -53,9 +54,6 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
             })
     }, [dataset])
 
-    // useEffect(() => {
-    //     rows = sessionStorage.getItem('saveData')
-    // }, [rows])
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {
@@ -85,6 +83,7 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                                         return prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.gool = e.target.value
+                                                localStorage.setItem('1_1_gool', i.gool)
                                             }
                                             return i;
                                         })
@@ -95,6 +94,7 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                                         return prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.supplier = e.target.value
+                                                localStorage.setItem('1_1_supplier', i.supplier)
                                             }
                                             return i;
                                         })
@@ -106,6 +106,7 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                                         return prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.qp = e.target.value
+                                                localStorage.setItem('1_1_qp', i.qp)
                                             }
                                             return i;
                                         })
@@ -118,6 +119,7 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                                             return prev.map(i => {
                                                 if (i.id === row.id) {
                                                     i.ssef = e.target.value
+                                                    localStorage.setItem('1_1_ssef', i.ssef)
                                                 }
                                                 return i;
                                             })
