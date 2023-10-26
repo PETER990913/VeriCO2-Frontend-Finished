@@ -52,7 +52,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (files) {
             const formData = new FormData()
             formData.append('csv', files[0]);
-            axios.post( SERVER_URL + '/read-file', formData, {
+            axios.post( 'https://verico2-bg.onrender.com/read-file', formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 }
@@ -61,12 +61,12 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         }
     }
     const handleFileParseCSV = () => {
-        axios.get(SERVER_URL + '/load-factor')
+        axios.get('https://verico2-bg.onrender.com/load-factor')
             .then(res => setDataset1(res.data));
     }
 
     useEffect(() => {
-        axios.get(SERVER_URL + '/load-scope')
+        axios.get('https://verico2-bg.onrender.com/load-scope')
             .then(res => setDataset2(res.data));
     }, [])
     // console.log("dataset1", dataset1)
@@ -127,7 +127,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
             navigate('/login');
         }
         else {
-            axios.get(SERVER_URL + '/api/calculation')
+            axios.get(SERVER_URL + '/calculation')
                 .then(res => {
                     //   console.log(res.data)
                     setListData([...res.data])
