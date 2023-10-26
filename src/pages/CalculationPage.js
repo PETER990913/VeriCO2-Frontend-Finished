@@ -45,7 +45,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [dataset2, setDataset2] = useState({})    
 
     useEffect(() => {
-        axios.get('http://verico2-bg.onrender.com/api/load-scope')
+        axios.get('https://verico2-bg.onrender.com/api/load-scope')
             .then(res => setDataset2(res.data));
     }, [])
     // console.log("dataset1", dataset1)
