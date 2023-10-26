@@ -42,38 +42,10 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const fileRef = useRef()
     const [dataset, setDataset] = useState([])
     const [dataset1, setDataset1] = useState({})
-    const [dataset2, setDataset2] = useState({})
-    // const onClick = () => {
-    //     fileRef.current.click()
-    // }
-    // const handleFileParse = (e) => {
-    //     const files = e.target.files;
-    //     console.log("file", files);
-    //     if (files) {
-    //         const formData = new FormData()
-    //         formData.append('csv', files[0]);
-    //         axios.post('http://localhost:4000/read-file', formData, {
-    //             headers: {
-    //                 "Content-Type": "multipart/form-data",
-    //             }
-    //         })
-    //             .then(res => setDataset(res.data.data));
-    //     }
-    // }
-    // const handleFileParseCSV = () => {
-    //     axios.get('http://localhost:4000/load-factor')
-    //         .then(res => setDataset1(res.data));
-    // }
-
-
-
-    // const handleFileParseScope = () => {
-    //     axios.get('http://localhost:4000/load-scope')
-    //         .then(res => setDataset2(res.data));
-    // }
+    const [dataset2, setDataset2] = useState({})    
 
     useEffect(() => {
-        axios.get('http://verico2-bg.onrender.com/load-scope')
+        axios.get('http://verico2-bg.onrender.com/api/load-scope')
             .then(res => setDataset2(res.data));
     }, [])
     // console.log("dataset1", dataset1)
