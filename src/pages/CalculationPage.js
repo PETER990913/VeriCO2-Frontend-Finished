@@ -127,7 +127,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
             navigate('/login');
         }
         else {
-            axios.get(SERVER_URL + '/calculation')
+            axios.get(SERVER_URL + '/api/calculation')
                 .then(res => {
                     //   console.log(res.data)
                     setListData([...res.data])
