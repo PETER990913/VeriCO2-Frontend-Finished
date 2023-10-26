@@ -42,10 +42,31 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const fileRef = useRef()
     const [dataset, setDataset] = useState([])
     const [dataset1, setDataset1] = useState({})
-    const [dataset2, setDataset2] = useState({})    
+    const [dataset2, setDataset2] = useState({})
+    const onClick = () => {
+        fileRef.current.click()
+    }
+    const handleFileParse = (e) => {
+        const files = e.target.files;
+        console.log("file", files);
+        if (files) {
+            const formData = new FormData()
+            formData.append('csv', files[0]);
+            axios.post( SERVER_URL + '/read-file', formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                }
+            })
+                .then(res => setDataset(res.data.data));
+        }
+    }
+    const handleFileParseCSV = () => {
+        axios.get(SERVER_URL + '/load-factor')
+            .then(res => setDataset1(res.data));
+    }
 
     useEffect(() => {
-        axios.get('https://verico2-bg.onrender.com/load-scope')
+        axios.get(SERVER_URL + '/load-scope')
             .then(res => setDataset2(res.data));
     }, [])
     // console.log("dataset1", dataset1)
@@ -61,6 +82,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [category_method11, setCategory_method11] = useState(0);
     const [category_method14, setCategory_method14] = useState(0);
     const [category_method15, setCategory_method15] = useState(0);
+    console.log(category_method1, category_method2, category_method4, category_method5, category_method7, category_method10, category_method11, category_method14, category_method15)
     const [result1_1, setResult1_1] = useState(0);
     const [result1_2, setResult1_2] = useState(0);
     const [result1_3, setResult1_3] = useState(0);
