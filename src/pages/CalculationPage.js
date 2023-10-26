@@ -73,7 +73,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     // }
 
     useEffect(() => {
-        axios.get('http://localhost:4000/load-scope')
+        axios.get('http://verico2-bg.onrender.com/load-scope')
             .then(res => setDataset2(res.data));
     }, [])
     // console.log("dataset1", dataset1)
