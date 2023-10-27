@@ -43,18 +43,18 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
         },
     ])
     currentRef.current = false;
-    
+
     useEffect(() => {
         const jsonData = localStorage.getItem('temp_rows');
-        if(!jsonData)return;
-        try{
+        if (!jsonData) return;
+        try {
             const _rows = JSON.parse(jsonData)
             setRows(_rows)
-        }catch{
+        } catch {
 
         }
     }, [])
-    
+
     useEffect(() => {
         console.log('Dataset:::', dataset[0])
         if (!dataset || !dataset.length) return;
@@ -97,7 +97,7 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                             <tr>
                                 <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        const newData =  prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.gool = e.target.value
                                                 localStorage.setItem('1_1_gool', i.gool)
@@ -110,7 +110,7 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                                 }} /></td>
                                 <td><input type='text' value={row.supplier} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        const newData =  prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.supplier = e.target.value
                                                 localStorage.setItem('1_1_supplier', i.supplier)
@@ -139,14 +139,14 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                                 <td className='AddStyle'>
                                     <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
                                         setRows(prev => {
-                                            const newData =  prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row.id) {
                                                     i.ssef = e.target.value
                                                     localStorage.setItem('1_1_ssef', i.ssef)
                                                 }
                                                 return i;
                                             })
-                                        localStorage.setItem('temp_rows', JSON.stringify(newData));
+                                            localStorage.setItem('temp_rows', JSON.stringify(newData));
                                             return newData
                                         })
                                     }} />
@@ -161,7 +161,7 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
 
-                                            const newData =  [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
                                             localStorage.setItem('temp_rows', JSON.stringify(newData))
                                             return newData
                                         })
@@ -170,10 +170,10 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row.id))
-                                            const newData =  [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
                                             localStorage.setItem('temp_rows', JSON.stringify(newData));
                                             return newData
-                                       
+
                                         })
 
                                     }} />

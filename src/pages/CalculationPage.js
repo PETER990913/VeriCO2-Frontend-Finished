@@ -697,7 +697,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
 
                             <div className='button' onClick={onClick}>Upload Data</div>
                             <input type="file" style={{ display: 'none' }} ref={fileRef} onChange={handleFileParse} />
-                            <div className='button' onClick={handleFileParseCSV}>Import Emission Factor</div>
+                            {/* <div className='button' onClick={handleFileParseCSV}>Import Emission Factor</div> */}
                         </div>
                     </div>
                     <div className='box'>
