@@ -652,7 +652,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                         <span>Scope 3 Emission:</span>
                         <div>
                             <span></span>
-                            <span>t CO2e</span>
+                            <span>tCO2e</span>
                         </div>
                     </div>
                 </div>
