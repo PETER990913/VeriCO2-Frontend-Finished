@@ -46,6 +46,7 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
     
     useEffect(() => {
         const jsonData = localStorage.getItem('temp_rows');
+        if(!jsonData)return;
         try{
             const _rows = JSON.parse(jsonData)
             setRows(_rows)
