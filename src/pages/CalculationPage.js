@@ -274,7 +274,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result1_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result1_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -287,7 +287,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result1_2 / 1000000).toFixed(1)}K</span>
+                            <span>{(result1_2 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -300,7 +300,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result1_3 / 1000000).toFixed(1)}K</span>
+                            <span>{(result1_3 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -313,7 +313,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result1_4 / 1000000).toFixed(1)}K</span>
+                            <span>{(result1_4 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -326,7 +326,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result2_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result2_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -339,7 +339,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result2_2 / 1000000).toFixed(1)}K</span>
+                            <span>{(result2_2 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -352,7 +352,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result2_3 / 1000000).toFixed(1)}K</span>
+                            <span>{(result2_3 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -365,7 +365,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result2_4 / 1000000).toFixed(1)}K</span>
+                            <span>{(result2_4 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -378,7 +378,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result1_15 / 1000000).toFixed(1)}K</span>
+                            <span>{(result1_15 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -391,7 +391,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result3_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result3_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -404,7 +404,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result3_2 / 1000000).toFixed(1)}K</span>
+                            <span>{(result3_2 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -417,7 +417,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result3_3 / 1000000).toFixed(1)}K</span>
+                            <span>{(result3_3 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -430,7 +430,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result4_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result4_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -443,7 +443,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result4_2 / 1000000).toFixed(1)}K</span>
+                            <span>{(result4_2 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -456,7 +456,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result5_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result5_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -469,7 +469,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result6_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result6_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -482,7 +482,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result6_2 / 1000000).toFixed(1)}K</span>
+                            <span>{(result6_2 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -495,7 +495,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result7_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result7_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -508,7 +508,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result8_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result8_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -521,7 +521,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result9_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result9_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -534,7 +534,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result9_2 / 1000000).toFixed(1)}K</span>
+                            <span>{(result9_2 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -547,7 +547,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result10_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result10_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -560,7 +560,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result10_2 / 1000000).toFixed(1)}K</span>
+                            <span>{(result10_2 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -573,7 +573,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result11_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result11_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -586,7 +586,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result12_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result12_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -599,7 +599,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result13_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result13_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -612,7 +612,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result13_2 / 1000000).toFixed(1)}K</span>
+                            <span>{(result13_2 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -625,7 +625,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result14_1 / 1000000).toFixed(1)}K</span>
+                            <span>{(result14_1 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
@@ -638,7 +638,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     <div className='top'>
                         <span>Scope 3 Emission:</span>
                         <div>
-                            <span>{(result14_2 / 1000000).toFixed(1)}K</span>
+                            <span>{(result14_2 / 1000000).toFixed(3)}K</span>
                             <span>t CO2e</span>
                         </div>
                     </div>
