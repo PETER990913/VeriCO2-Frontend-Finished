@@ -3,7 +3,6 @@ import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
 function PurchasedSupplier({ onChange, dataset, dataset1 }) {
-
     const currentRef = useRef()
     const [rows, setRows] = useState([
         {

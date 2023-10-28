@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
 function PurchasedHybrid({ onChange, dataset1 }) {
+    const currentRef = useRef()
     const [rows, setRows] = useState([
         {
             id: 0,
@@ -80,6 +81,49 @@ function PurchasedHybrid({ onChange, dataset1 }) {
             ssef: '0'
         },
     ])
+    currentRef.current = false;
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_1_2_1');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows(_rows)
+        } catch {
+
+        }
+    }, [])
+
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_1_2_2');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows1(_rows)
+        } catch {
+
+        }
+    }, [])
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_1_2_3');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows2(_rows)
+        } catch {
+
+        }
+    }, [])
+
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_1_2_4');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows3(_rows)
+        } catch {
+
+        }
+    }, [])
 
 
     useEffect(() => {
@@ -134,34 +178,40 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <tr>
                                 <td><input type='text' value={row.gool} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.gool = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_2_1', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td><input type='text' value={row.qp} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.qp = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_2_1', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row.ssef} className='Input_form' onChange={(e) => {
                                         setRows(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row.id) {
                                                     i.ssef = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_1_2_1', JSON.stringify(newData));
+                                            return newData;
                                         })
 
                                     }} />
@@ -175,14 +225,18 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_1_2_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_1_2_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>
@@ -197,34 +251,40 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <tr>
                                 <td><input type='text' value={row1.gool} className='Input_form' onChange={(e) => {
                                     setRows1(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row1.id) {
                                                 i.gool = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_2_2', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td><input type='text' value={row1.qp} className='Input_form' onChange={(e) => {
                                     setRows1(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row1.id) {
                                                 i.qp = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_2_2', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row1.ssef} className='Input_form' onChange={(e) => {
                                         setRows1(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row1.id) {
                                                     i.ssef = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_1_2_2', JSON.stringify(newData));
+                                            return newData;
                                         })
 
                                     }} />
@@ -238,14 +298,18 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row1.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_1_2_2', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows1(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row1.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_1_2_2', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>
@@ -261,34 +325,40 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <tr>
                                 <td><input type='text' value={row2.gool} className='Input_form' onChange={(e) => {
                                     setRows2(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row2.id) {
                                                 i.gool = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_2_3', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td><input type='text' value={row2.qp} className='Input_form' onChange={(e) => {
                                     setRows2(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row2.id) {
                                                 i.qp = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_2_3', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row2.ssef} className='Input_form' onChange={(e) => {
                                         setRows2(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row2.id) {
                                                     i.ssef = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_1_2_3', JSON.stringify(newData));
+                                            return newData;
                                         })
 
                                     }} />
@@ -302,14 +372,18 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row2.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_1_2_3', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows2(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row2.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_1_2_3', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>
@@ -324,34 +398,40 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                             <tr>
                                 <td><input type='text' value={row3.gool} className='Input_form' onChange={(e) => {
                                     setRows3(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row3.id) {
                                                 i.gool = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_2_4', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td><input type='text' value={row3.qp} className='Input_form' onChange={(e) => {
                                     setRows3(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row3.id) {
                                                 i.qp = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_2_4', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row3.ssef} className='Input_form' onChange={(e) => {
                                         setRows3(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row3.id) {
                                                     i.ssef = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_1_2_4', JSON.stringify(newData));
+                                            return newData;
                                         })
 
                                     }} />
@@ -365,14 +445,18 @@ function PurchasedHybrid({ onChange, dataset1 }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row3.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_1_2_4', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows3(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row3.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_1_2_4', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>
