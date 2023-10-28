@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
 function ProcessingSite({ onChange }) {
+    const currentRef = useRef()
     const [rows, setRows] = useState([
         {
             id: 0,
@@ -26,7 +27,27 @@ function ProcessingSite({ onChange }) {
             factor: '0.2',
         },
     ])
+    currentRef.current = false;
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_9_1_1');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows(_rows)
+        } catch {
 
+        }
+    }, [])
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_9_1_2');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows1(_rows)
+        } catch {
+
+        }
+    }, [])
     useEffect(() => {
         let sum = 0
         let sum1 = 0
@@ -55,34 +76,40 @@ function ProcessingSite({ onChange }) {
                             <tr>
                                 <td><input type='text' value={row.consumed} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.consumed = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_9_1_1', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td><input type='text' value={row.amount} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.amount = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_9_1_1', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row.factor} className='Input_form' onChange={(e) => {
                                         setRows(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row.id) {
                                                     i.factor = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_9_1_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                     <img src={Add} alt='Add' className='AddButton' onClick={() => {
@@ -95,14 +122,18 @@ function ProcessingSite({ onChange }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_9_1_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_9_1_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>
@@ -117,34 +148,40 @@ function ProcessingSite({ onChange }) {
                             <tr>
                                 <td><input type='text' value={row1.waste} className='Input_form' onChange={(e) => {
                                     setRows1(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row1.id) {
                                                 i.waste = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_9_1_2', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td><input type='text' value={row1.amount} className='Input_form' onChange={(e) => {
                                     setRows1(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row1.id) {
                                                 i.amount = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_9_1_2', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row1.factor} className='Input_form' onChange={(e) => {
                                         setRows1(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row1.id) {
                                                     i.factor = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_9_1_2', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                     <img src={Add} alt='Add' className='AddButton' onClick={() => {
@@ -157,14 +194,18 @@ function ProcessingSite({ onChange }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row1.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_9_1_2', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows1(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row1.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_9_1_2', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>

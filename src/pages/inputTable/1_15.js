@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
 function FuelTransmission({ onChange, dataset1 }) {
+    const currentRef = useRef()
     const [rows, setRows] = useState([
         {
             id: 0,
@@ -60,7 +61,17 @@ function FuelTransmission({ onChange, dataset1 }) {
             UEFH: '0'
         },
     ])
+    currentRef.current = false;
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_1_15');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows(_rows)
+        } catch {
 
+        }
+    }, [])
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {
@@ -99,33 +110,39 @@ function FuelTransmission({ onChange, dataset1 }) {
                             <tr>
                                 <td><input type='text' value={row.Country} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.Country = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td colSpan={2}><input type='text' value={row.EP} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.EP = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td colSpan={2}><input type='text' value={row.DHP} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.DHP = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
@@ -142,56 +159,66 @@ function FuelTransmission({ onChange, dataset1 }) {
                             <tr>
                                 <td><input type='text' value={row.Country1} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.Country1 = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td><input type='text' value={row.UEF} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.UEF = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td><input type='text' value={row.CEF} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.CEF = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td><input type='text' value={row.TDR} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.TDR = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row.UEFH} className='Input_form' onChange={(e) => {
                                         setRows(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row.id) {
                                                     i.UEFH = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                     <img src={Add} alt='Add' className='AddButton' onClick={() => {
@@ -209,14 +236,18 @@ function FuelTransmission({ onChange, dataset1 }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_1_15', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>

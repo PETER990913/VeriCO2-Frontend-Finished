@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
 function InvestmentSpecific({ onChange, dataset2 }) {
+    const currentRef = useRef()
     const [rows, setRows] = useState([
         {
             id: 0,
@@ -33,7 +34,17 @@ function InvestmentSpecific({ onChange, dataset2 }) {
             share: '25'
         },
     ])
-    
+    currentRef.current = false;
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_14_1');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows(_rows)
+        } catch {
+
+        }
+    }, [])
     const handleOnchange = (name, index) => {
         console.log('changed name', name)
         const value = dataset2[name]
@@ -65,7 +76,7 @@ function InvestmentSpecific({ onChange, dataset2 }) {
     //     const v6 = dataset2[keyVal] ? dataset2[keyVal][2] : 0
     //     if (v6) setV6(v6)
     // }
-    
+
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
@@ -83,45 +94,53 @@ function InvestmentSpecific({ onChange, dataset2 }) {
                             <tr>
                                 <td><input type='text' value={row.Investment} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.Investment = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_14_1', JSON.stringify(newData));
+                                        return newData;
                                     })
                                     handleOnchange(e.target.value, row.id);
                                 }} /></td>
                                 <td><input type='text' value={row.Type} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.Type = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_14_1', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td><input type='text' value={row.scope12} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.scope12 = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_14_1', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row.share} className='Input_form' onChange={(e) => {
                                         setRows(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row.id) {
                                                     i.share = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_14_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                     <img src={Add} alt='Add' className='AddButton' onClick={() => {
@@ -135,19 +154,23 @@ function InvestmentSpecific({ onChange, dataset2 }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_14_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_14_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>
                             </tr>
-                        )}     
+                        )}
                     </tbody>
                 </table>
             </div>

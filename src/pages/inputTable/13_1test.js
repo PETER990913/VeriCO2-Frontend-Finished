@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
 function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
+    const currentRef = useRef()
     const [rows, setRows] = useState([
         {
             id: 0,
@@ -53,7 +54,17 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
             scope2: '90000'
         },
     ])
+    currentRef.current = false;
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_13_1');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows(_rows)
+        } catch {
 
+        }
+    }, [])
     const handleOnchange = (name, index) => {
         console.log('changed name', name)
         const value = dataset2[name]
@@ -95,35 +106,41 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
                             <tr>
                                 <td><input type='text' value={row.Franchises} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.Franchises = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_13_1', JSON.stringify(newData));
+                                        return newData;
                                     })
                                     handleOnchange(e.target.value, row.id);
                                 }} /></td>
                                 <td><input type='text' value={row.scope1} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.scope1 = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_13_1', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row.scope2} className='Input_form' onChange={(e) => {
                                         setRows(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row.id) {
                                                     i.scope2 = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_13_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                     <img src={Add} alt='Add' className='AddButton' onClick={() => {
@@ -136,14 +153,18 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_13_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_13_1', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>

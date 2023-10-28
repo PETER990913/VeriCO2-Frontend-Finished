@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
-function FranchisesAverage({onChange}) {
+function FranchisesAverage({ onChange }) {
+    const currentRef = useRef()
     const [rows, setRows] = useState([
         {
             id: 0,
@@ -40,7 +41,17 @@ function FranchisesAverage({onChange}) {
             factor: '100'
         },
     ])
+    currentRef.current = false;
+    useEffect(() => {
+        const jsonData = localStorage.getItem('temp_rows_13_2');
+        if (!jsonData) return;
+        try {
+            const _rows = JSON.parse(jsonData)
+            setRows(_rows)
+        } catch {
 
+        }
+    }, [])
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {
@@ -50,7 +61,7 @@ function FranchisesAverage({onChange}) {
         console.log(sum);
     }, [rows])
 
-    
+
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
@@ -68,45 +79,53 @@ function FranchisesAverage({onChange}) {
                             <tr>
                                 <td><input type='text' value={row.Franchisee} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.Franchisee = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_13_2', JSON.stringify(newData));
+                                        return newData;
                                     })
                                 }} /></td>
                                 <td><input type='text' value={row.Type} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.Type = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_13_2', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td><input type='text' value={row.sa} className='Input_form' onChange={(e) => {
                                     setRows(prev => {
-                                        return prev.map(i => {
+                                        const newData = prev.map(i => {
                                             if (i.id === row.id) {
                                                 i.sa = e.target.value
                                             }
                                             return i;
                                         })
+                                        localStorage.setItem('temp_rows_13_2', JSON.stringify(newData));
+                                        return newData;
                                     })
 
                                 }} /></td>
                                 <td className='AddStyle'>
                                     <input type='text' value={row.factor} className='Input_form' onChange={(e) => {
                                         setRows(prev => {
-                                            return prev.map(i => {
+                                            const newData = prev.map(i => {
                                                 if (i.id === row.id) {
                                                     i.factor = e.target.value
                                                 }
                                                 return i;
                                             })
+                                            localStorage.setItem('temp_rows_13_2', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                     <img src={Add} alt='Add' className='AddButton' onClick={() => {
@@ -120,19 +139,23 @@ function FranchisesAverage({onChange}) {
                                             }
                                             let pos = prev.indexOf(prev.find(item => item.id === row.id)) + 1
 
-                                            return [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            const newData = [].concat(prev.slice(0, pos), newRow, prev.slice(pos))
+                                            localStorage.setItem('temp_rows_13_2', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }
                                     } />
                                     <img src={Delete} alt='Delete' className='AddButton' onClick={() => {
                                         setRows(prev => {
                                             let pos = prev.indexOf(prev.find(item => item.id == row.id))
-                                            return [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            const newData = [].concat(prev.slice(0, pos), prev.slice(pos + 1))
+                                            localStorage.setItem('temp_rows_13_2', JSON.stringify(newData));
+                                            return newData;
                                         })
                                     }} />
                                 </td>
                             </tr>
-                        )}      
+                        )}
                     </tbody>
                 </table>
             </div>
