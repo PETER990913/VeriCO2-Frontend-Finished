@@ -71,6 +71,21 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
     }, [dataset])
 
     useEffect(() => {
+        console.log('Dataset1:-----', dataset1)
+        if (!dataset1 || !dataset1.length) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            // dataset1.forEach((d, idx) => {
+            //     k[idx].ssef = d[k.gool]
+            // })
+            // console.log(k)
+            console.log('kkkkkkkkkkkkk', k)
+            return k
+        })
+        console.log('hi Dataset1')
+
+    }, [dataset1])
+    useEffect(() => {
         let sum = 0
         rows.forEach(row => {
             sum += parseFloat(row.qp) * parseFloat(row.ssef);

@@ -65,6 +65,23 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
 
         }
     }, [])
+
+    useEffect(() => {
+        console.log('Data------------:::', dataset)
+        if (!dataset || !dataset.length) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            dataset[1].forEach((d, idx) => {
+                k[idx].scope1 = d[1]
+                k[idx].scope2 = d[2]
+            })
+            // console.log(k)
+            return k
+        })
+        console.log('hi')
+
+    }, [dataset])
+
     const handleOnchange = (name, index) => {
         console.log('changed name', name)
         const value = dataset2[name]

@@ -2,28 +2,28 @@ import React, { useState, useEffect, useRef } from 'react'
 import '../../App.scss'
 import Add from '../../assets/images/Add.png'
 import Delete from '../../assets/images/Delete.png'
-function InvestmentSpecific({ onChange, dataset2 }) {
+function InvestmentSpecific({ onChange, dataset2, dataset }) {
     const currentRef = useRef()
     const [rows, setRows] = useState([
         {
             id: 0,
             Investment: '1',
             Type: 'Equity Investment in subsidiary',
-            scope12: '120000',
+            scope12: '100000',
             share: '40'
         },
         {
             id: 1,
             Investment: '2',
             Type: 'Equity Investment in subsidiary',
-            scope12: '200000',
+            scope12: '180000',
             share: '15'
         },
         {
             id: 2,
             Investment: '3',
             Type: 'Equity investment in joint venture',
-            scope12: '1600000',
+            scope12: '1000000',
             share: '25'
         },
         {
@@ -45,6 +45,20 @@ function InvestmentSpecific({ onChange, dataset2 }) {
 
         }
     }, [])
+
+    useEffect(() => {
+        if (!dataset || !dataset.length) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            dataset[2].forEach((d, idx) => {
+                k[idx].scope12 = d[1]
+            })
+            // console.log(k)
+            return k
+        })
+
+    }, [dataset])
+
     const handleOnchange = (name, index) => {
         console.log('changed name', name)
         const value = dataset2[name]
