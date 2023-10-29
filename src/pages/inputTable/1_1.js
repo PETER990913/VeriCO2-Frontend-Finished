@@ -55,6 +55,21 @@ function PurchasedSupplier({ onChange, dataset, dataset1 }) {
     }, [])
 
     useEffect(() => {
+        console.log('Dataset1:-----', dataset1)
+        // if (!dataset1) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                k[idx].ssef = dataset1[k[idx].gool]
+            })
+            console.log(k)
+            console.log('kkkkkkkkkkkkk', k)
+            return k
+        })
+
+    }, [dataset1])
+
+    useEffect(() => {
         console.log('Dataset:::', dataset[0])
         if (!dataset || !dataset.length) return;
         setRows(prev => {
