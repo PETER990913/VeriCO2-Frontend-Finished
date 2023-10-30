@@ -45,6 +45,24 @@ function WasteWaste({ onChange, dataset1 }) {
 
         }
     }, [])
+
+    useEffect(() => {
+        console.log('Dataset1:-----', dataset1)
+        if (!dataset1 || Object.keys(dataset1).length == 0) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].supplier)) {
+                    k[idx].ssef = dataset1[k[idx].supplier]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+    }, [dataset1])
+
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {
