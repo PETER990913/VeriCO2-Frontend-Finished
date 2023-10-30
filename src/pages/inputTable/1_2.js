@@ -92,19 +92,61 @@ function PurchasedHybrid({ onChange, dataset1 }) {
 
         }
     }, [])
-    
+
     useEffect(() => {
         console.log('Dataset1:-----', dataset1)
-        // if (!dataset1) return;
+        if (!dataset1 || Object.keys(dataset1).length == 0) return;
         setRows(prev => {
             const k = [].concat([], prev)
             prev.forEach((d, idx) => {
-                k[idx].ssef = dataset1[k[idx].gool]
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+        setRows1(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+        setRows2(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+        setRows3(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
             })
             return k
         })
 
     }, [dataset1])
+
     useEffect(() => {
         const jsonData = localStorage.getItem('temp_rows_1_2_2');
         if (!jsonData) return;
