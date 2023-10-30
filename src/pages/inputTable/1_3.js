@@ -62,13 +62,22 @@ function PurchasedAverage({ onChange, dataset1 }) {
         console.log(sum);
     }, [rows])
 
-    // useEffect(() => {
-    //     if (dataset1.Hard_drive) {
-    //         setV1(dataset1.Hard_drive)
-    //         setV3(dataset1.Integrated_circuits)
-    //         setV5(dataset1.Liquid_Crystal_Display)
-    //     }
-    // }, [dataset1])
+    useEffect(() => {
+        console.log('Dataset1:-----', dataset1)
+        if (!dataset1 || Object.keys(dataset1).length == 0) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+    }, [dataset1])
 
 
     return (
