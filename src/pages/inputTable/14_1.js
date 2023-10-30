@@ -101,7 +101,7 @@ function InvestmentSpecific({ onChange, dataset2, dataset }) {
                         <tr>
                             <th>Investment</th>
                             <th>Investment type</th>
-                            <th>Scope 1 and scope 2 emissions of investee company in reporting year (tonnes CO2e)</th>
+                            <th>Scope 1 and scope 2 emissions of investee company in reporting year (Kg CO2e)</th>
                             <th>Reporting company’s share of equity (percent)</th>
                         </tr>
                         {rows.map((row) =>
