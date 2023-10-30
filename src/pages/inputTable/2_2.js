@@ -49,25 +49,25 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
     const [rows2, setRows2] = useState([
         {
             id: 0,
-            gool: 'Cotton',
+            gool: 'Cotton1',
             qp: '1000',
             ssef: '0.01'
         },
         {
             id: 1,
-            gool: 'Polymer',
+            gool: 'Polymer1',
             qp: '2500',
             ssef: '0.02'
         },
         {
             id: 2,
-            gool: 'Chemical A',
+            gool: 'Chemical A1',
             qp: '800',
             ssef: '0.05'
         },
         {
             id: 3,
-            gool: 'Chemical B',
+            gool: 'Chemical B1',
             qp: '200',
             ssef: '0.1'
         },
@@ -92,6 +92,62 @@ function CapitalGoodHybrid({ onChange, dataset1 }) {
 
         }
     }, [])
+    
+    useEffect(() => {
+        console.log('Dataset1:-----', dataset1)
+        if (!dataset1 || Object.keys(dataset1).length == 0) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+
+        setRows1(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+
+        setRows2(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+
+        setRows3(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+    }, [dataset1])
 
     useEffect(() => {
         const jsonData = localStorage.getItem('temp_rows_1_2_2');

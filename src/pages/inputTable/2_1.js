@@ -55,6 +55,23 @@ function CapitalGoodSupplier({ onChange, dataset, dataset1 }) {
     }, [])
 
     useEffect(() => {
+        console.log('Dataset1:-----', dataset1)
+        if (!dataset1 || Object.keys(dataset1).length == 0) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].gool)) {
+                    k[idx].ssef = dataset1[k[idx].gool]
+                }
+                else {
+                    k[idx].ssef = k[idx].ssef
+                }
+            })
+            return k
+        })
+    }, [dataset1])
+
+    useEffect(() => {
         console.log('Dataset:::', dataset[0])
         if (!dataset || !dataset.length) return;
         setRows(prev => {
@@ -70,6 +87,21 @@ function CapitalGoodSupplier({ onChange, dataset, dataset1 }) {
 
     }, [dataset])
 
+    useEffect(() => {
+        console.log('Dataset1:-----', dataset1)
+        if (!dataset1 || !dataset1.length) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            // dataset1.forEach((d, idx) => {
+            //     k[idx].ssef = d[k.gool]
+            // })
+            // console.log(k)
+            console.log('kkkkkkkkkkkkk', k)
+            return k
+        })
+        console.log('hi Dataset1')
+
+    }, [dataset1])
     useEffect(() => {
         let sum = 0
         rows.forEach(row => {

@@ -83,15 +83,22 @@ function FuelTransmission({ onChange, dataset1 }) {
 
 
 
-    // useEffect(() => {
-    //     if (dataset1.Australia_Upstream_emission_factor) {
-    //         setV8(dataset1.Australia_Upstream_emission_factor)
-    //         setV12(dataset1.Canada_Upstream_emission_factor)
-    //         setV18(dataset1.India_Upstream_emission_factor)
-    //         setV22(dataset1.United_States_Upstream_emission_factor)
-    //         setV26(dataset1.Turkey_Upstream_emission_factor)
-    //     }
-    // }, [dataset1])
+    useEffect(() => {
+        console.log('Dataset1:-----', dataset1)
+        if (!dataset1 || Object.keys(dataset1).length == 0) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                if (dataset1.hasOwnProperty(k[idx].Country1)) {
+                    k[idx].UEF = dataset1[k[idx].Country1]
+                }
+                else {
+                    k[idx].UEF = k[idx].UEF
+                }
+            })
+            return k
+        })
+    }, [dataset1])
 
 
     return (
