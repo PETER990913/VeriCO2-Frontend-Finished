@@ -92,7 +92,19 @@ function PurchasedHybrid({ onChange, dataset1 }) {
 
         }
     }, [])
+    
+    useEffect(() => {
+        console.log('Dataset1:-----', dataset1)
+        // if (!dataset1) return;
+        setRows(prev => {
+            const k = [].concat([], prev)
+            prev.forEach((d, idx) => {
+                k[idx].ssef = dataset1[k[idx].gool]
+            })
+            return k
+        })
 
+    }, [dataset1])
     useEffect(() => {
         const jsonData = localStorage.getItem('temp_rows_1_2_2');
         if (!jsonData) return;
