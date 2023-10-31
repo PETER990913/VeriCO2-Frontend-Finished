@@ -87,13 +87,12 @@ function FranchisesSpecificTest({ onChange, dataset, dataset2 }) {
         const value = dataset2[name]
         if (value) {
             const newDatas = [...rows]
-            newDatas[index] = {
-                ...newDatas[index],
-                Franchises: name,
-                scope1: value[0],
-                scope2: value[1],
-
-            }
+            newDatas.map(el => {
+                if (el.id == index) {
+                    el.scope1 = value[0]
+                    el.scope2 = value[1]
+                } return el;
+            })
             setRows(newDatas)
         }
     }

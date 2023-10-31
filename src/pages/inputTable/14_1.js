@@ -63,13 +63,12 @@ function InvestmentSpecific({ onChange, dataset2, dataset }) {
         console.log('changed name', name)
         const value = dataset2[name]
         if (value) {
-            const newDatas = [...rows]
-            newDatas[index] = {
-                ...newDatas[index],
-                Investment: name,
-                scope12: value[2],
-
-            }
+            const newDatas = [...rows]            
+            newDatas.map(el => {
+                if (el.id == index) {
+                    el.scope12 = value[2]
+                } return el;
+            })
             setRows(newDatas)
         }
     }
