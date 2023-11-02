@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setTab } from '../redux/actions/index';
+import Modal from "react-overlays/Modal";
 import '../App.scss';
 import PurchasedSupplier from './inputTable/1_1';
 import PurchasedHybrid from './inputTable/1_2';
@@ -43,6 +44,9 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [dataset, setDataset] = useState([])
     const [dataset1, setDataset1] = useState({})
     const [dataset2, setDataset2] = useState({})
+    const [showModal, setShowModal] = useState(false);
+    const renderBackdrop = (props) => <div className="backdrop" {...props} />;
+    const handleClose = () => setShowModal(false);
     const onClick = () => {
         fileRef.current.click()
     }
@@ -52,7 +56,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (files) {
             const formData = new FormData()
             formData.append('csv', files[0]);
-            axios.post( 'https://verico2-bg.onrender.com/read-file', formData, {
+            axios.post('https://verico2-bg.onrender.com/read-file', formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 }
@@ -63,6 +67,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const handleFileParseCSV = () => {
         axios.get('https://verico2-bg.onrender.com/load-factor')
             .then(res => setDataset1(res.data));
+        setShowModal(false)
     }
 
     useEffect(() => {
@@ -697,7 +702,37 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
 
                             <div className='button' onClick={onClick}>Upload Data</div>
                             <input type="file" style={{ display: 'none' }} ref={fileRef} onChange={handleFileParse} />
-                            <div className='button' onClick={handleFileParseCSV}>Import Emission Factor</div>
+                            <div className='button' onClick={() => setShowModal(true)}>Import Emission Factor</div>
+                            {showModal && (                                
+                                <Modal
+                                    className="modal"
+                                    show={showModal}
+                                    onHide={handleClose}
+                                    renderBackdrop={renderBackdrop}
+                                >
+                                    <div>
+                                        <div className="modal-header">
+                                            <div className="modal-title">Confirmation</div>
+                                            <div>
+                                                <span className="close-button" onClick={handleClose}>
+                                                    x
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="modal-desc">
+                                            <p>Are you sure you want to import the emission factor?</p>
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button className="secondary-button" onClick={handleFileParseCSV}>
+                                                Yes
+                                            </button>
+                                            <button className="primary-button" onClick={handleClose}>
+                                                No
+                                            </button>
+                                        </div>
+                                    </div>
+                                </Modal>
+                            )}
                         </div>
                     </div>
                     <div className='box'>
