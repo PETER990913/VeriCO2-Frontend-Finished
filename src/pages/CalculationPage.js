@@ -45,10 +45,14 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [dataset1, setDataset1] = useState({})
     const [dataset2, setDataset2] = useState({})
     const [showModal, setShowModal] = useState(false);
+    const [showModal1, setShowModal1] = useState(false);   
+    const renderBackdrop1 = (props) => <div className="backdrop" {...props} />;
+    const handleClose1 = () => setShowModal1(false);
     const renderBackdrop = (props) => <div className="backdrop" {...props} />;
     const handleClose = () => setShowModal(false);
     const onClick = () => {
         fileRef.current.click()
+        setShowModal1(false)
     }
     const handleFileParse = (e) => {
         const files = e.target.files;
@@ -700,7 +704,37 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
 
                             {displaycase()}
 
-                            <div className='button' onClick={onClick}>Upload Data</div>
+                            <div className='button' onClick={() => setShowModal1(true)}>Upload Data</div>
+                            {showModal1 && (                                
+                                <Modal
+                                    className="modal"
+                                    show={showModal1}
+                                    onHide={handleClose1}
+                                    renderBackdrop={renderBackdrop1}
+                                >
+                                    <div>
+                                        <div className="modal-header">
+                                            <div className="modal-title">Confirmation</div>
+                                            <div>
+                                                <span className="close-button" onClick={handleClose}>
+                                                    x
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="modal-desc">
+                                            <p>Are you sure you want to upload data?</p>
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button className="secondary-button" onClick={onClick}>
+                                                Yes
+                                            </button>
+                                            <button className="primary-button" onClick={handleClose}>
+                                                No
+                                            </button>
+                                        </div>
+                                    </div>
+                                </Modal>
+                            )}
                             <input type="file" style={{ display: 'none' }} ref={fileRef} onChange={handleFileParse} />
                             <div className='button' onClick={() => setShowModal(true)}>Import Emission Factor</div>
                             {showModal && (                                
