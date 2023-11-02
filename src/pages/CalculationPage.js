@@ -59,6 +59,13 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         fileRef.current.click()
         setShowModal1(false)
     }
+
+    const handleReset = () => {
+        console.log('------+++++++++-----------')
+        localStorage.clear();
+        window.location.reload();
+    }
+
     const handleFileParse = (e) => {
         const files = e.target.files;
         console.log("file", files);
@@ -772,7 +779,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                     </div>
                                 </Modal>
                             )}
-                            <div className='button'>Reset</div>
+                            <div className='button' onClick={handleReset}>Reset</div>
                         </div>
                     </div>
                     <div className='box'>
