@@ -55,6 +55,11 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [showModal2, setShowModal2] = useState(false);   
     const renderBackdrop2 = (props) => <div className="backdrop" {...props} />;
     const handleClose2 = () => setShowModal2(false);
+
+    const [showModal3, setShowModal3] = useState(false);   
+    const renderBackdrop3 = (props) => <div className="backdrop" {...props} />;
+    const handleClose3 = () => setShowModal3(false);
+    
     const onClick = () => {
         fileRef.current.click()
         setShowModal1(false)
@@ -64,6 +69,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         console.log('------+++++++++-----------')
         localStorage.clear();
         window.location.reload();
+        setShowModal3(false)
     }
 
     const handleFileParse = (e) => {
@@ -779,7 +785,38 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                     </div>
                                 </Modal>
                             )}
-                            <div className='button' onClick={handleReset}>Reset</div>
+                            <div className='button' onClick={() => setShowModal3(true)}>Reset</div>
+                            {showModal3 && (                                
+                                <Modal
+                                    className="modal"
+                                    show={showModal3}
+                                    onHide={handleClose3}
+                                    renderBackdrop={renderBackdrop3}
+                                >
+                                    <div>
+                                        <div className="modal-header">
+                                            <div className="modal-title">Confirmation</div>
+                                            <div>
+                                                <span className="close-button" onClick={handleClose3}>
+                                                    x
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="modal-desc">
+                                            <p>Are you sure you want to reset data?</p>
+                                        </div>
+                                        <div className="modal-footer">
+                                            {/* <button className="secondary-button"> */}
+                                            <button className="secondary-button" onClick={handleReset}>
+                                                Yes
+                                            </button>
+                                            <button className="primary-button" onClick={handleClose3}>
+                                                No
+                                            </button>
+                                        </div>
+                                    </div>
+                                </Modal>
+                            )}
                         </div>
                     </div>
                     <div className='box'>
