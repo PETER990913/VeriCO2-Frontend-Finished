@@ -45,11 +45,16 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [dataset1, setDataset1] = useState({})
     const [dataset2, setDataset2] = useState({})
     const [showModal, setShowModal] = useState(false);
-    const [showModal1, setShowModal1] = useState(false);   
-    const renderBackdrop1 = (props) => <div className="backdrop" {...props} />;
-    const handleClose1 = () => setShowModal1(false);
     const renderBackdrop = (props) => <div className="backdrop" {...props} />;
     const handleClose = () => setShowModal(false);
+
+    const [showModal1, setShowModal1] = useState(false);   
+    const renderBackdrop1 = (props) => <div className="backdrop" {...props} />;
+    const handleClose1 = () => setShowModal1(false);  
+    
+    const [showModal2, setShowModal2] = useState(false);   
+    const renderBackdrop2 = (props) => <div className="backdrop" {...props} />;
+    const handleClose2 = () => setShowModal2(false);
     const onClick = () => {
         fileRef.current.click()
         setShowModal1(false)
@@ -783,7 +788,38 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                 Start Calculation
                             </div>
                         }
-                        <div className='button' onClick={() => navigate('/display')} >Emission display</div>
+                        <div className='button' onClick={() => setShowModal2(true)} >Emission display</div>
+                        {showModal2 && (                                
+                                <Modal
+                                    className="modal"
+                                    show={showModal2}
+                                    onHide={handleClose2}
+                                    renderBackdrop={renderBackdrop2}
+                                >
+                                    <div>
+                                        <div className="modal-header">
+                                            <div className="modal-title">Confirmation</div>
+                                            <div>
+                                                <span className="close-button" onClick={handleClose2}>
+                                                    x
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="modal-desc">
+                                            <p>Are you sure you want to go to Emission display page?</p>
+                                        </div>
+                                        <div className="modal-footer">
+                                            {/* <button className="secondary-button"> */}
+                                            <button className="secondary-button" onClick={() => navigate('/display')}>
+                                                Yes
+                                            </button>
+                                            <button className="primary-button" onClick={handleClose2}>
+                                                No
+                                            </button>
+                                        </div>
+                                    </div>
+                                </Modal>
+                            )}
                     </div>
                 </div>
             </div>
