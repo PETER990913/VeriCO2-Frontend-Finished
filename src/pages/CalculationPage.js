@@ -716,7 +716,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                         <div className="modal-header">
                                             <div className="modal-title">Confirmation</div>
                                             <div>
-                                                <span className="close-button" onClick={handleClose}>
+                                                <span className="close-button" onClick={handleClose1}>
                                                     x
                                                 </span>
                                             </div>
@@ -728,7 +728,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                             <button className="secondary-button" onClick={onClick}>
                                                 Yes
                                             </button>
-                                            <button className="primary-button" onClick={handleClose}>
+                                            <button className="primary-button" onClick={handleClose1}>
                                                 No
                                             </button>
                                         </div>
