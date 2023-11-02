@@ -772,6 +772,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                     </div>
                                 </Modal>
                             )}
+                            <div className='button'>Reset</div>
                         </div>
                     </div>
                     <div className='box'>
